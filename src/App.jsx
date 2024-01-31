@@ -18,8 +18,6 @@ import SignIn from "./component/SignIn/SignIn";
 import UploadBlogs from "./component/UploadBlogs/UploadBlogs";
 import Blogs from "./component/Blogs/Blogs";
 import FullBlogs from "./component/Blogs/FullBlogs/FullBlogs";
-// import Cookies from "./component/Cookies/Cookies";
-import Disclaimer from "./component/Cookies/Disclaimer/Disclaimer";
 import { useState } from "react";
 import UploadVideos from "./component/UploadVideos/UploadVideos";
 import GetVideos from "./component/GetVideos/GetVideos";
@@ -59,7 +57,6 @@ function App() {
           <Route path="/upload-blogs" element={<UploadBlogs />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blogs/:blogId" element={<FullBlogs />} />
-          {/* <Route path="/cookies" element={<Cookies />} /> */}
           <Route path="/disclaimer" element={<Disclaimer />} />
           <Route path="/upload-videos" element={<UploadVideos />} />
           <Route path="/videos" element={<GetVideos />} />
