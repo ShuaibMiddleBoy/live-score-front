@@ -1,0 +1,39 @@
+.batters {
+  .buttonContainer {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .optionButton {
+    border-radius: 20px;
+    color: #222;
+    cursor: pointer;
+    background-color: #CFE0DB;
+    padding: 5px 20px;
+    font-size: 12px;
+    border: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .optionButton.selected {
+    background-color: #ff6b00;
+    color: #fff;
+  }
+}
+
+@media (max-width: 700px) {
+  .batters {
+    margin: 0px;
+  }
+
+  .batters .buttonContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .batters .optionButton {
+    font-size: 14px;
+    padding: 3px 8px;
+  }
+}

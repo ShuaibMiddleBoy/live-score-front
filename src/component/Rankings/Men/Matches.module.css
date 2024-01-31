@@ -1,0 +1,73 @@
+/* ODIMatches.module.css */
+.rankingsContainer {
+  margin: 0;
+  padding: 20px;
+  border-radius: 4px;
+  color: #aaa;
+}
+
+.rankingsTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.rankingsTable thead th {
+  background-color: #f2f2f2;
+  text-align: left;
+  padding: 10px;
+  font-weight: normal;
+  color: #333;
+}
+
+.rankingsTable tbody td {
+  padding: 10px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.playerInfo {
+  display: flex;
+  align-items: center;
+}
+
+.playerImage {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.country {
+  color: #777;
+  font-size: 0.8em;
+}
+
+.spinnerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.spinner {
+  text-align: center;
+}
+
+/* Media query for screens with a width less than 700px */
+@media (max-width: 700px) {
+  .rankingsTable thead th {
+    font-size: 12px;
+  }
+
+  .rankingsTable tbody td {
+    font-size: 12px;
+  }
+
+  .playerImage {
+    width: 30px;
+    height: 30px;
+  }
+
+  .country {
+    font-size: 0.7em;
+  }
+}

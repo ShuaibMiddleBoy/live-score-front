@@ -1,0 +1,126 @@
+footer.footer {
+  border-top: 1px solid gray;
+  border-radius: 0px 0px 5px 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 30px 50px;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer .footer-first {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-items: center;
+  padding: 20px 0px;
+}
+
+.footer .footer-first .inner {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.footer .footer-first .inner h3 {
+  color: #ff6b00;
+  font-size: 25px;
+}
+
+.footer .footer-first .inner p {
+  color: #aaa;
+  letter-spacing: 0.8px;
+}
+
+.footer .footer-first .inner h4 {
+  color: #ff6b00;
+  font-size: 18px;
+}
+
+.footer .footer-first .inner ul {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer .footer-first .inner ul li {
+  color: #aaa;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.footer .footer-first .inner ul li i {
+  font-size: 12px;
+}
+
+.footer .footer-first .inner ul li .links-footer {
+  color: var(--white-color);
+  font-size: 16px;
+  text-decoration: none;
+}
+
+.footer .footer-first .inner ul li .links-footer:hover {
+  color: #ff6b00;
+}
+
+.footer .footer-first .inner .subs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer .footer-first .inner .subs input {
+  border-radius: 10px;
+  padding: 12px;
+  border: lightgray;
+  outline-style: none;
+}
+
+.footer .footer-first .inner .subs button {
+  border-radius: 10px;
+  cursor: pointer;
+  padding: 9px;
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 1px;
+  color: #aaa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  border: lightgray;
+}
+
+.footer .footer-first .inner .social-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer .footer-first .inner .social-links a {
+  background-color: #ff6b00;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+
+/* copyright  */
+
+.copyright {
+  color: #aaa;
+  padding-bottom: 20px;
+}
+
+
+@media screen and (max-width: 990px) {
+  .footer .footer-first {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}

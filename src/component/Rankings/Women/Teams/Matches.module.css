@@ -1,0 +1,41 @@
+.rankingsContainer {
+  margin: 0;
+  padding: 20px;
+  border-radius: 4px;
+  color: #aaa;
+}
+
+.rankingsTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.rankingsTable thead th {
+  background-color: #f2f2f2;
+  text-align: left;
+  padding: 10px;
+  font-weight: normal;
+  color: #333;
+}
+
+.rankingsTable tbody td {
+  padding: 10px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.playerInfo {
+  display: flex;
+  align-items: center;
+}
+
+.playerImage {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.country {
+  color: #777;
+  font-size: 0.8em;
+}

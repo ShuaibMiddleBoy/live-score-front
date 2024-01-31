@@ -1,0 +1,132 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 30px 50px;
+}
+
+.wrapper h2 {
+    font-size: 24px;
+    color: #f1f1f1;
+}
+
+.scheduleTabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.tabBtn {
+    border-radius: 20px;
+    color: #222;
+    cursor: pointer;
+    background-color: #CFE0DB;
+    padding: 5px 20px;
+    font-size: 12px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border: none;
+    outline: none;
+}
+
+.activeTabBtn {
+    color: #fff;
+    background-color: #ff6b00;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+
+.tabContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    margin: auto;
+    padding: 50px 0px;
+}
+
+.tabContainer .firstRow h2 {
+    color: #ff6b00;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+
+.tabContainer .secRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+
+.tabContainer .secRow h3 {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.tabContainer .secRow .secCol p {
+    font-size: 14px;
+    text-align: start;
+    color: #aaa;
+
+}
+
+.tabContainer .secRow .secCol p:last-child {
+    color: #aaa;
+    font-size: 12px;
+}
+
+.tabContainer .secRow .thirdCol {
+    display: flex;
+    font-size: 12px;
+    flex-direction: column;
+}
+
+.tabContainer .secRow .thirdCol span:first-child {
+    font-weight: 500;
+}
+
+
+.tabContainer .secRow .thirdCol span:last-child {
+    color: #666666;
+}
+
+.spinnerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.spinner {
+    text-align: center;
+}
+
+
+@media screen and (max-width:720px) {
+    .tabContainer .secRow {
+        grid-template-columns: 1fr;
+        border-bottom: 1px solid gray;
+    }
+}
+
+@media screen and (max-width:460px) {
+    .wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        margin: 10px 20px;
+    }
+
+    .wrapper h2 {
+        font-size: 20px;
+    }
+
+    .tabContainer {
+        padding: 20px 0px;
+    }
+
+    .tabContainer .secRow .secCol p {
+        font-size: 12px;
+
+    }
+}

@@ -1,0 +1,114 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 30px 50px;
+}
+
+.wrapper h2 {
+  font-size: 24px;
+}
+
+.scheduleTabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tabBtn {
+  border-radius: 20px;
+  color: #222;
+  cursor: pointer;
+  background-color: #CFE0DB;
+  padding: 5px 20px;
+  font-size: 12px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border: none;
+  outline: none;
+}
+
+.activeTabBtn {
+  color: #fff;
+  background-color: #ff6b00;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+table.table,
+th,
+td {
+  border: none;
+  border-collapse: collapse;
+}
+
+.table {
+  width: 95%;
+  margin: 30px auto;
+  border: none;
+}
+
+.table th {
+  background-color: #ecebeb;
+  padding: 5px 0 5px 20px;
+  color: #222;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.table td {
+  font-size: 14px;
+  margin: 20px 0px;
+}
+
+.table td:first-child {
+  color: #aaa;
+  font-weight: 600;
+  padding: 0 10px;
+}
+
+.table td:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: #222;
+}
+
+.table td .inner div {
+  color: #ff6b00;
+}
+
+.table td .inner {
+  border-bottom: 1px solid rgb(235, 230, 230);
+  padding: 10px;
+}
+
+.table td:last-child span {
+  color: #666;
+}
+
+.table th {
+  text-align: left;
+}
+
+.spinnerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.spinner {
+  text-align: center;
+}
+
+
+@media screen and (max-width: 530px) {
+  .wrapper {
+    margin: 10px 20px;
+  }
+
+  .table td {
+    font-size: 12px;
+    margin: 10px 0px;
+  }
+}

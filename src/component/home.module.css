@@ -1,0 +1,40 @@
+.main {
+    width: 1150px;
+    margin: 50px auto;
+    box-shadow: rgba(99, 99, 99, .2) 0px 2px 8px 0px;
+    position: relative;
+    border-radius: 5px;
+    background-color: #121212;
+}
+
+@media screen and (max-width:1168px) {
+    .main {
+        width: 1000px;
+    }
+}
+
+@media screen and (max-width:1062px) {
+    .main {
+        width: 950px;
+    }
+}
+
+@media screen and (max-width:986px) {
+    .main {
+        width: 900px;
+    }
+}
+
+@media screen and (max-width:934px) {
+    .main {
+        width: 800px;
+    }
+}
+
+@media screen and (max-width:826px) {
+
+    .main {
+        width: 100%;
+        margin: 0;
+    }
+}

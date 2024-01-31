@@ -1,0 +1,128 @@
+.menu {
+  display: flex;
+  justify-content: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 20px 20px;
+  background-color: #111;
+  border-bottom: 1px solid #575656;
+}
+
+.menu button {
+  color: #aaa;
+  font-size: 14px;
+  font-weight: 500;
+  color: #aaa;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.menu button:hover {
+  color: #ff6b00;
+}
+
+.menu button.selected {
+  color: #ff6b00;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px 30px;
+  margin: 20px;
+}
+
+.card {
+  display: flex;
+  padding: 10px;
+  background-color: #181818;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+  gap: 20px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+.card:hover {
+  transform: scale(1.01);
+}
+
+.cardImage {
+  margin-top: 8px;
+}
+
+.cardImage img {
+  border-radius: 3px;
+}
+
+.card .cardContent {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.card .cardContent .cardCategory span {
+  color: #aaa;
+  font-size: 11px;
+}
+
+.card .cardContent .cardHeading h3 {
+  font-size: 16px;
+  letter-spacing: 1px;
+  color: #ff6b00;
+}
+
+.card .cardContent .cardPara p {
+  color: #aaa;
+  font-size: 14px;
+}
+
+.card .cardContent .cardTime span {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.spinnerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.spinner {
+  text-align: center;
+}
+
+/* Styles for screens with width less than 700px */
+@media (max-width: 700px) {
+  .menu {
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menu button {
+    margin: 5px;
+  }
+
+  .content {
+    padding: 10px;
+  }
+
+  .container {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cardImage img {
+    width: 100%;
+    max-width: 300px;
+    /* Adjust the max-width as needed */
+  }
+}

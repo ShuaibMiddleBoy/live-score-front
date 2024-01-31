@@ -1,0 +1,55 @@
+.primaryInternational {
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.international {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    row-gap: 1px;
+}
+
+.team {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 8px;
+}
+
+.flag {
+    width: 80px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.name {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    color: #aaa;
+}
+
+.spinnerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.spinner {
+    text-align: center;
+}
+
+@media (max-width: 700px) {
+    .international {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    }
+
+    .flag {
+        width: 70px;
+    }
+
+    .name {
+        font-size: 14px;
+    }
+}

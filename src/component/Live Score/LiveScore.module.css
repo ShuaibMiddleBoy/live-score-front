@@ -1,0 +1,60 @@
+.menu {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 20px;
+  border-bottom: 1px solid #575656;
+}
+
+.menu button {
+  color: #aaa;
+  font-size: 14px;
+  font-weight: 500;
+  color: #aaa;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.menu button:hover {
+  color: #ff6b00;
+}
+
+/* Styles for the selected menu item */
+.menu button.selected {
+  color: #ff6b00;
+}
+
+
+
+/* Styles for specific menu items */
+/* You can customize these styles based on your content */
+.content h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #f1f1f1;
+}
+
+/* Example: Current Matches */
+.current-matches {
+  color: #007bff;
+}
+
+/* Example: Current & Future Series */
+.current-series {
+  color: #ff6b00;
+}
+
+/* Example: Matches By Day */
+.matches-by-day {
+  color: #4caf50;
+}
+
+/* Example: Teams */
+.teams {
+  color: #e91e63;
+}
+

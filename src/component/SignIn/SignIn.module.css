@@ -1,0 +1,100 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.title {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #ff6b00;
+}
+
+.form {
+  text-align: left;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 18px;
+  display: block;
+  margin-bottom: 5px;
+  color: #aaa;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 10px 5px;
+  font-size: 14px;
+  outline: none;
+  border-radius: 5px;
+  transition: border-color 0.3s ease;
+}
+
+.input:focus,
+.textarea:focus {
+  background-color: #ebebeb;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button {
+  background-color: #ff6b00;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #ff4500;
+}
+.newHere {
+  font-size: 16px;
+  color: #aaa;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.newHere:hover {
+  color: #ff6b00;
+}
+
+/* Styles for screens with width less than 700px */
+@media (max-width: 700px) {
+  .title {
+    font-size: 24px;
+    margin-bottom: 16px;
+  }
+
+  .formGroup {
+    margin-bottom: 16px;
+  }
+
+  .mainFormGroup {
+    grid-template-columns: 1fr;
+  }
+
+  .input,
+  .textarea {
+    font-size: 16px;
+    padding: 8px 5px;
+  }
+
+  .button {
+    padding: 8px 16px;
+    font-size: 16px;
+  }
+}

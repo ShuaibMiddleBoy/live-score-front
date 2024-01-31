@@ -1,0 +1,79 @@
+.mainTabMenu {
+  padding: 20px;
+}
+
+.mainTabMenu h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.tabMenu {
+  display: flex;
+  gap: 20px;
+}
+
+.tabButton {
+  background-color: transparent;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  color: #aaa;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  outline: none;
+}
+
+.defaultSelected {
+  color: #ff6b00;
+  text-decoration: underline;
+}
+
+.tabButton:hover {
+  text-decoration: underline;
+  color: #ff6b00;
+}
+
+.tabContent {
+  margin-top: 20px;
+  padding: 20px;
+}
+
+.liveContent {
+  color: #007bff;
+}
+
+.recentContent {
+  color: #ff9800;
+}
+
+.upcomingContent {
+  color: #4caf50;
+}
+
+
+@media screen and (max-width:466px) {
+  .mainTabMenu {
+    padding: 5px;
+  }
+}
+
+@media screen and (max-width:700px) {
+  .mainTabMenu {
+    padding: 5px;
+  }
+
+  .mainTabMenu h2 {
+    text-align: center;
+  }
+
+  .tabMenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}

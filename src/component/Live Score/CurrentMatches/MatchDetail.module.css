@@ -1,0 +1,215 @@
+.combinedComponent {
+  padding: 20px;
+  border-radius: 5px;
+}
+
+.combinedComponent h2 {
+  color: #ff6b00;
+}
+
+.section {
+  margin-top: 30px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.table tr:nth-child(even) {
+  color: #aaa;
+}
+
+.commentary {
+  padding: 30px 50px;
+  color: #aaa;
+}
+
+.primaryCommentary {
+  border-bottom: 1px solid #aaa;
+  margin-bottom: 10px;
+}
+
+.comment {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+.commentEntry {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.commentTime {
+  flex: 1.5;
+  font-weight: bold;
+  padding-right: 10px;
+  color: #ff6b00;
+}
+
+.commentText {
+  flex: 5;
+  word-break: break-word;
+}
+
+.overSummary table {
+  border-collapse: collapse;
+  width: 70%;
+  margin: 20px auto;
+  border-radius: 5px;
+}
+
+.overSummary td {
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+
+.overSummary td:first-child {
+  font-weight: bold;
+}
+
+.spinnerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.spinner {
+  text-align: center;
+}
+
+.customLink {
+  color: #ff6b00;
+}
+
+.combinedComponent {
+  color: white;
+  padding: 20px;
+}
+
+.container .inner1 {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+
+}
+
+.container .inner1 .seriesName {
+  color: #aaa;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.container .inner1 .teams {
+  color: #aaa;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+.container .status {
+  color: #ff6b00;
+}
+
+
+.fullScoredContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1D1D1D;
+  padding: 10px 15px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-top: 30px;
+}
+
+.inner h3 {
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.batingTable {
+  width: 100%;
+}
+
+.batingTable thead {
+  background-color: gray;
+  font-size: 14px;
+  text-align: left;
+}
+
+.batingTable td {
+  padding: 5px;
+  border-bottom: 1px solid rgb(48, 48, 48);
+}
+
+.batingTable tbody {
+  font-size: 14px;
+}
+
+.batingTable th {
+  padding: 5px 15px;
+  border-bottom: 1px solid rgb(48, 48, 48);
+}
+
+.fallOfWicktsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.fallOfWicktsContainer h3 {
+  background-color: gray;
+  font-weight: 500;
+  padding: 5px 15px;
+  font-size: 14px
+}
+
+.fallOfWickts {
+  font-size: 14px;
+}
+
+.bowlerContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.bowlerContainer h3 {
+  background-color: gray;
+  font-weight: 500;
+  padding: 5px 15px;
+  font-size: 14px
+}
+
+.bowlerTable {
+  width: 100%;
+}
+
+.bowlerTable thead {
+  background-color: gray;
+  font-size: 14px;
+  text-align: left;
+}
+
+.bowlerTable td {
+  padding: 5px;
+  border-bottom: 1px solid rgb(48, 48, 48);
+}
+
+.bowlerTable th {
+  padding: 5px 15px;
+  border-bottom: 1px solid rgb(48, 48, 48);
+}
+
+.bowlerTable tbody {
+  font-size: 14px;
+}

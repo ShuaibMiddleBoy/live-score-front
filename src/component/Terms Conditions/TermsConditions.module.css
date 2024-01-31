@@ -1,0 +1,64 @@
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in-out forwards;
+  transform: scale(0.95);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #ff6b00; 
+  text-align: center;
+}
+
+.sectionTitle {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #aaa;
+}
+
+.contentList {
+  list-style-type: disc;
+  margin-left: 20px;
+  padding: 0;
+  color: #aaa;
+}
+
+.contentItem {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 8px;
+  color: #aaa;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+/* Styles for screens with width less than 700px */
+@media (max-width: 700px) {
+  .title {
+    font-size: 24px; 
+  }
+
+  .sectionTitle {
+    font-size: 20px; 
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+
+  .contentItem {
+    font-size: 16px; 
+    margin-bottom: 4px;
+  }
+}

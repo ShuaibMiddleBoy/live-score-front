@@ -1,0 +1,225 @@
+/* Header Container */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 50px;
+  font-weight: 500;
+  font-style: normal;
+  border-bottom: 1px solid #202020;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  max-width: 85px;
+}
+
+/* Navigation Links */
+.nav-links ul {
+  list-style: none;
+  display: flex;
+  gap: 22px;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #aaa;
+  font-size: 14px;
+  font-weight: 700;
+  transition: color 0.3s ease-in-out;
+  cursor: pointer !important;
+}
+
+.nav-links a:hover {
+  color: #ff6b00;
+}
+
+.nav-link-active a,
+.nav-link-active button {
+  color: #ff6b00 !important;
+}
+
+/* Theme Toggle (Hamburger Icon) */
+.theme-toggle {
+  display: flex;
+  font-size: 22px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.hamburger-menu.active {
+  transform: rotate(90deg);
+}
+
+.cross-icon {
+  display: none;
+}
+
+.cross-icon.active {
+  display: block;
+}
+
+/* Hamburger Icon Bars */
+.fa-bars {
+  display: none;
+}
+
+.bar {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 3px 0;
+  transition: 0.4s;
+}
+
+/* Mobile Menu (Responsive) */
+.mobile-menu-open .nav-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  right: 0;
+  text-align: center;
+  z-index: 1;
+  border: 1px solid gray;
+}
+
+.mobile-menu-open .nav-links ul {
+  display: flex;
+  gap: 20px;
+  padding-left: 40px;
+  padding-top: 50px;
+}
+
+a {
+  cursor: pointer;
+}
+
+.mobile-menu-open .bar:nth-child(1) {
+  transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.mobile-menu-open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-open .bar:nth-child(3) {
+  transform: rotate(45deg) translate(-5px, -6px);
+}
+
+/* Dropdown Menu */
+.nav-item-dropdown {
+  position: relative;
+}
+
+.nav-item-dropdown span {
+  text-decoration: none;
+  color: #aaa;
+  font-size: 14px;
+  font-weight: 700;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-item-dropdown button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.nav-item-dropdown i {
+  color: #aaa;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* Submenu */
+ul.submenu {
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: absolute;
+  background-color: #202020;
+  padding: 20px;
+  border-radius: 3px;
+}
+
+/* Mobile Menu Icon */
+.menu-icon {
+  display: none;
+  color: white;
+  z-index: 999;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+}
+
+.signBTns {
+  display: flex;
+}
+
+.signBTns .button {
+  background-color: #ff6b00;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin: 0px 7px;
+  width: 100px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #ff4500;
+}
+
+.nav-links a .MuiSvgIcon-root,
+.nav-item-dropdown span .MuiSvgIcon-root {
+  font-size: 18px;
+  position: relative;
+  right: 4px;
+  top: 3px;
+}
+
+/* Hide the normal menu and show the hamburger icon when the screen is 900px or narrower */
+@media screen and (max-width: 1000px) {
+  .nav-links {
+    position: absolute;
+    right: 0;
+    top: 0px;
+    background-color: #1D1D1D;
+    width: 0px;
+    height: 100vh;
+    transition: all 0.3s ease-in;
+    overflow: hidden;
+  }
+
+  .menu-icon {
+    display: block;
+    cursor: pointer;
+  }
+
+  .nav-links.active {
+    width: 270px;
+  }
+
+  .nav-links ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .nav-links ul li {
+    margin-right: unset;
+    margin-top: 22px;
+  }
+}

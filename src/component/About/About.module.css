@@ -1,0 +1,85 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px;
+  text-align: center;
+  border-radius: 10px;
+}
+
+.title {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #ff6b00;
+}
+
+.description {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #aaa;
+}
+
+.features {
+  display: flex;
+  justify-content: space-between;
+}
+
+.feature {
+  width: 250px; 
+  padding: 20px;
+  background-color: #1D1D1D;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  margin-right: 20px; 
+  text-align: left;
+  transition: transform 0.2s ease-in-out;
+}
+
+.feature:last-child {
+  margin-right: 0; 
+}
+
+.feature:hover {
+  transform: translateY(-5px);
+}
+
+.featureTitle {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #aaa;
+}
+
+.featureText {
+  font-size: 16px;
+  color: #aaa;
+}
+
+/* Fade transition effect */
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 500ms;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 500ms;
+}
+@media (max-width: 700px) {
+  .features {
+    flex-direction: column; 
+  }
+
+  .feature {
+    width: 100%; 
+    margin-right: 0; 
+    margin-bottom: 10px; 
+  }
+}

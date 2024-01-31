@@ -1,0 +1,63 @@
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .videoContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between; 
+    margin: 25px 0px;
+  }
+  
+  .card {
+    width: 48%; 
+    background-color: #181818;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  
+  .cardContent {
+    padding: 16px;
+  }
+  
+  .cardVideo {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  
+  .cardVideo video {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+  
+  .playButton {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    cursor: pointer !important;
+  }
+  
+  .cardTitle {
+    margin-top: 10px;
+    text-align: center;
+  }
+  .cardTitle h3{
+    color: #ff6b00;
+  }
+  .spinnerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+  }
+  
+  .spinner {
+    text-align: center;
+  }
+  
