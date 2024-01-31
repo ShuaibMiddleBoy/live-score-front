@@ -18,6 +18,7 @@ import SignIn from "./component/SignIn/SignIn";
 import UploadBlogs from "./component/UploadBlogs/UploadBlogs";
 import Blogs from "./component/Blogs/Blogs";
 import FullBlogs from "./component/Blogs/FullBlogs/FullBlogs";
+import Disclaimer from "./component/Cookies/Disclaimer/Disclaimer";
 import { useState } from "react";
 import UploadVideos from "./component/UploadVideos/UploadVideos";
 import GetVideos from "./component/GetVideos/GetVideos";
