@@ -17,9 +17,11 @@
   gap: 20px;
   transition: transform 0.3s ease;
 }
+
 .card:hover {
   transform: scale(1.01);
 }
+
 .cardImage {
   margin-top: 8px;
 }
@@ -68,6 +70,38 @@
 .spinner {
   text-align: center;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+}
+
+.paginationButton {
+  background-color: #ff6b00;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  margin: 0 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.paginationButton:hover {
+  background-color: #ff7c32;
+}
+
+.paginationIcon {
+  margin-left: 5px;
+  /* Adjust the spacing between the button text and icon */
+}
+
+.active {
+  background-color: #ff7c32;
+}
+
 
 /* Styles for screens with width less than 700px */
 @media (max-width: 700px) {

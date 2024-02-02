@@ -1,0 +1,135 @@
+.blogLink {
+    text-decoration: none;
+  }
+  
+  .container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px 30px;
+    margin: 20px;
+  }
+  
+  .card {
+    display: flex;
+    padding: 10px;
+    background-color: #181818;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    gap: 20px;
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: scale(1.01);
+  }
+  
+  .cardImage {
+    margin-top: 8px;
+  }
+  
+  .cardImage img {
+    border-radius: 3px;
+    height: 120px;
+    width: 120px;
+  }
+  
+  .card .cardContent {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .card .cardContent .cardCategory span {
+    color: #aaa;
+    font-size: 11px;
+  }
+  
+  .card .cardContent .cardHeading h3 {
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: #ff6b00;
+  }
+  
+  .card .cardContent .cardPara p {
+    color: #aaa;
+    font-size: 14px;
+  }
+  
+  .card .cardContent .cardTime span {
+    font-size: 12px;
+    color: #aaa;
+  }
+  
+  .spinnerContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+  }
+  
+  .spinner {
+    text-align: center;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+  }
+  
+  .paginationButton {
+    background-color: #ff6b00;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+  }
+  
+  .paginationButton:hover {
+    background-color: #ff7c32;
+  }
+  
+  .paginationIcon {
+    margin-left: 5px;
+    /* Adjust the spacing between the button text and icon */
+  }
+  
+  .active {
+    background-color: #ff7c32;
+  }
+  
+  
+  /* Styles for screens with width less than 700px */
+  @media (max-width: 700px) {
+    .menu {
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .menu button {
+      margin: 5px;
+    }
+  
+    .content {
+      padding: 10px;
+    }
+  
+    .container {
+      grid-template-columns: 1fr;
+    }
+  
+    .card {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .cardImage img {
+      width: 100%;
+      max-width: 300px;
+    }
+  }

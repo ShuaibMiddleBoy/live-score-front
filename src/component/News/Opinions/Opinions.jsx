@@ -2,11 +2,28 @@ import React, { useEffect, useState } from "react";
 import OpinionsStyles from "../News.module.css";
 import { PulseLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 export default function Opinions() {
   const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+
+  const paraphraseHline = async (hline) => {
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}chatbots/paraphrase-generated-content`,
+        {
+          prompt: hline,
+        }
+      );
+
+      return response.data.paraphrasedContent;
+    } catch (error) {
+      console.error("Error paraphrasing content:", error);
+      return hline; // Return the original hline in case of error
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,11 +45,16 @@ export default function Opinions() {
         // Filter out objects with 'story' key
         const filteredData = data.storyList.filter((item) => "story" in item);
 
-        setNewsData(filteredData);
+        const paraphrasedData = await Promise.all(filteredData.map(async (news) => {
+          const paraphrasedHline = await paraphraseHline(news.story.hline);
+          return { ...news, paraphrasedHline };
+        }));
+
+        setNewsData(paraphrasedData);
         setLoading(false);
-        console.log(filteredData);
       } catch (error) {
         console.error("Error fetching news data:", error);
+        setLoading(false);
       }
     };
 
@@ -64,6 +86,7 @@ export default function Opinions() {
       return `${daysAgo}d ago`;
     }
   };
+
   const handleCardClick = (newsId) => {
     navigate(`/news/${newsId}`);
   };
@@ -95,7 +118,7 @@ export default function Opinions() {
                   <span>{news.story.context}</span>
                 </div>
                 <div className={OpinionsStyles.cardHeading}>
-                  <h3>{news.story.hline}</h3>
+                  <h3>{news.paraphrasedHline}</h3>
                 </div>
                 <div className={OpinionsStyles.cardPara}>
                   <p>{news.story.intro}</p>

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 import SpotlightStyles from "../News.module.css";
 import { useNavigate } from "react-router-dom";
 import { PulseLoader } from "react-spinners";
@@ -28,9 +29,16 @@ export default function Spotlight() {
         // Filter out objects with 'story' key
         const filteredData = data.storyList.filter((item) => "story" in item);
 
-        setNewsData(filteredData);
+        // Phrase the content and set it in the state
+        const phrasedData = await Promise.all(
+          filteredData.map(async (news) => {
+            const paraphrasedHline = await paraphraseContent(news.story.hline);
+            return { ...news, story: { ...news.story, hline: paraphrasedHline } };
+          })
+        );
+
+        setNewsData(phrasedData);
         setLoading(false);
-        console.log(filteredData);
       } catch (error) {
         console.error("Error fetching news data:", error);
         setLoading(false);
@@ -39,6 +47,20 @@ export default function Spotlight() {
 
     fetchData();
   }, []);
+
+  // Function to paraphrase the content using the API
+  const paraphraseContent = async (content) => {
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}chatbots/paraphrase-generated-content`,
+        { content }
+      );
+      return response.data.paraphrasedContent;
+    } catch (error) {
+      console.error("Error paraphrasing content:", error);
+      return content; // Return the original content in case of an error
+    }
+  };
 
   const getPlayerImageURL = (imageId, index) => {
     const delay = index * 10000;

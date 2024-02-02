@@ -12,7 +12,7 @@ export default function Interviews() {
     try {
       const response = await fetch("https://api.ai21.com/studio/v1/paraphrase", {
         headers: {
-          "Authorization": "Bearer M30BDw8tc376gOLhoVhZ9DC19SViWRlp", // Replace with your actual API key
+          "Authorization": "Bearer M30BDw8tc376gOLhoVhZ9DC19SViWRlp", 
           "Content-Type": "application/json"
         },
         body: JSON.stringify({

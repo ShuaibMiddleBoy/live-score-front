@@ -29,13 +29,10 @@ export default function AllStories() {
         // Filter out objects with 'ad' key
         const filteredData = data.storyList.filter((item) => "story" in item);
 
-        // Use a queue to process paraphrasing requests sequentially
-        const paraphrasedData = [];
-        for (const item of filteredData) {
-          const paraphrasedHline = await getParaphrasedText(item.story.hline);
-          const paraphrasedIntro = await getParaphrasedText(item.story.intro);
-          paraphrasedData.push({ ...item, paraphrasedHline, paraphrasedIntro });
-        }
+        const paraphrasedData = await Promise.all(filteredData.map(async (news) => {
+          const paraphrasedHline = await paraphraseText(news.story.hline);
+          return { ...news, paraphrasedHline };
+        }));
 
         setNewsData(paraphrasedData);
         setLoading(false);
@@ -48,31 +45,6 @@ export default function AllStories() {
     fetchData();
   }, []);
 
-  const getParaphrasedText = async (text) => {
-    const options = {
-      method: 'POST',
-      url: 'https://rewriter-paraphraser-text-changer-multi-language.p.rapidapi.com/rewrite',
-      headers: {
-        'content-type': 'application/json',
-        'X-RapidAPI-Key': '11f942ceefmsh60fc922bd658939p18eb25jsnd019c0c8347f',
-        'X-RapidAPI-Host': 'rewriter-paraphraser-text-changer-multi-language.p.rapidapi.com',
-      },
-      data: {
-        language: 'en',
-        strength: 3,
-        text: text,
-      },
-    };
-
-    try {
-      const response = await axios.request(options);
-      return response.data.rewrite; // Assuming the API response provides the paraphrased text
-    } catch (error) {
-      console.error(error);
-      return text; // Return original text in case of error
-    }
-  };
-
   const getPlayerImageURL = (imageId, index) => {
     const delay = index * 10000;
     return `${import.meta.env.VITE_BASE_URL}images/get-images/${imageId}?delay=${delay}`;
@@ -80,6 +52,22 @@ export default function AllStories() {
 
   const handleCardClick = (newsId) => {
     navigate(`/news/${newsId}`);
+  };
+
+  const paraphraseText = async (text) => {
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/chatbots/paraphrase-generated-content",
+        {
+          prompt: text,
+        }
+      );
+
+      return response.data.paraphrasedContent;
+    } catch (error) {
+      console.error("Error paraphrasing content:", error);
+      return text; // Return the original text in case of error
+    }
   };
 
   return (
@@ -109,10 +97,10 @@ export default function AllStories() {
                   <span>{news.story.context}</span>
                 </div>
                 <div className={AllStoriesStyles.cardHeading}>
-                  <h3>{news.paraphrasedHline}</h3> {/* Use paraphrased headline */}
+                  <h3>{news.paraphrasedHline}</h3>
                 </div>
                 <div className={AllStoriesStyles.cardPara}>
-                  <p>{news.paraphrasedIntro}</p> {/* Use paraphrased introduction text */}
+                  <p>{news.story.intro}</p>
                 </div>
                 <div className={AllStoriesStyles.cardTime}>
                   <span>

@@ -1,12 +1,29 @@
 import React, { useEffect, useState } from "react";
-import StatsStyles from "../News.module.css";
-import { useNavigate } from "react-router-dom";
+import SpecialStyles from "../News.module.css";
 import { PulseLoader } from "react-spinners";
+import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 export default function Special() {
   const [newsData, setNewsData] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+
+  const paraphraseHline = async (hline) => {
+    try {
+      const response = await axios.post(
+        `${import.meta.env.VITE_BASE_URL}chatbots/paraphrase-generated-content`,
+        {
+          prompt: hline,
+        }
+      );
+
+      return response.data.paraphrasedContent;
+    } catch (error) {
+      console.error("Error paraphrasing content:", error);
+      return hline; // Return the original hline in case of error
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -28,9 +45,13 @@ export default function Special() {
         // Filter out objects with 'story' key
         const filteredData = data.storyList.filter((item) => "story" in item);
 
-        setNewsData(filteredData);
+        const paraphrasedData = await Promise.all(filteredData.map(async (news) => {
+          const paraphrasedHline = await paraphraseHline(news.story.hline);
+          return { ...news, paraphrasedHline };
+        }));
+
+        setNewsData(paraphrasedData);
         setLoading(false);
-        console.log(filteredData);
       } catch (error) {
         console.error("Error fetching news data:", error);
         setLoading(false);
@@ -73,37 +94,37 @@ export default function Special() {
   return (
     <div>
       {loading ? (
-        <div className={StatsStyles.spinnerContainer}>
-          <div className={StatsStyles.spinner}>
+        <div className={SpecialStyles.spinnerContainer}>
+          <div className={SpecialStyles.spinner}>
             <PulseLoader color={"#ff6b00"} loading={loading} size={15} />
           </div>
         </div>
       ) : (
-        <div className={StatsStyles.container}>
+        <div className={SpecialStyles.container}>
           {newsData.map((news, index) => (
             <div
               key={index}
-              className={StatsStyles.card}
+              className={SpecialStyles.card}
               onClick={() => handleCardClick(news.story.id)}
             >
-              <div className={StatsStyles.cardImage}>
+              <div className={SpecialStyles.cardImage}>
                 <img
                   src={getPlayerImageURL(news.story.imageId, index)}
                   alt="News"
                 />
               </div>
-              <div className={StatsStyles.cardContent}>
-                <div className={StatsStyles.cardCategory}>
+              <div className={SpecialStyles.cardContent}>
+                <div className={SpecialStyles.cardCategory}>
                   <span>{news.story.context}</span>
                 </div>
-                <div className={StatsStyles.cardHeading}>
-                  <h3>{news.story.hline}</h3>
+                <div className={SpecialStyles.cardHeading}>
+                  <h3>{news.paraphrasedHline}</h3>
                 </div>
-                <div className={StatsStyles.cardPara}>
+                <div className={SpecialStyles.cardPara}>
                   <p>{news.story.intro}</p>
                 </div>
-                <div className={StatsStyles.cardTime}>
-                  <span> {getTimeAgo(news.story.pubTime)}</span>
+                <div className={SpecialStyles.cardTime}>
+                  <span>{getTimeAgo(news.story.pubTime)}</span>
                 </div>
               </div>
             </div>

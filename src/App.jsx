@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
-import LiveScore from "./component/Live Score/LiveScore";
 import Home from "./component/Home";
 import Schedule from "./component/Schedule/Schedule";
 import News from "./component/News/News";
@@ -18,11 +17,13 @@ import SignIn from "./component/SignIn/SignIn";
 import UploadBlogs from "./component/UploadBlogs/UploadBlogs";
 import Blogs from "./component/Blogs/Blogs";
 import FullBlogs from "./component/Blogs/FullBlogs/FullBlogs";
+import Cookies from "./component/Cookies/Cookies";
 import Disclaimer from "./component/Cookies/Disclaimer/Disclaimer";
 import { useState } from "react";
 import UploadVideos from "./component/UploadVideos/UploadVideos";
 import GetVideos from "./component/GetVideos/GetVideos";
 import Chatbot from "./component/Chatbot/Chatbot";
+import LiveScoreHome from "./component/Live Score/LiveScoreHome";
 
 function App() {
   const [disclaimerAccepted, setDisclaimerAccepted] = useState(false);
@@ -33,12 +34,10 @@ function App() {
   };
   return (
     <>
-    {!disclaimerAccepted && (
-        <Disclaimer onAccept={handleAcceptDisclaimer} />
-      )}
+      {!disclaimerAccepted && <Disclaimer onAccept={handleAcceptDisclaimer} />}
       <Routes>
         <Route path="/" element={<Home />}>
-          <Route path="/" element={<LiveScore />} />
+          <Route path="/" element={<LiveScoreHome />} />
           <Route path="/schedule" element={<Schedule />} />
           <Route path="/news" element={<News />} />
           <Route path="/rankings/men" element={<MenRankings />} />
@@ -58,6 +57,7 @@ function App() {
           <Route path="/upload-blogs" element={<UploadBlogs />} />
           <Route path="/blogs" element={<Blogs />} />
           <Route path="/blogs/:blogId" element={<FullBlogs />} />
+          <Route path="/cookies" element={<Cookies />} />
           <Route path="/disclaimer" element={<Disclaimer />} />
           <Route path="/upload-videos" element={<UploadVideos />} />
           <Route path="/videos" element={<GetVideos />} />

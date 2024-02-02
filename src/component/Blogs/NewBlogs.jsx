@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import BlogsStyles from "./Blogs.module.css";
+import BlogsStyles from "./NewBlogs.module.css";
 import { PulseLoader } from "react-spinners";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
-export default function Blogs() {
+export default function NewBlogs() {
   const [loading, setLoading] = useState(true);
   const [blogs, setBlogs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [blogsPerPage] = useState(10); // Number of blogs to display per page
+  const [blogsPerPage] = useState(5); // Number of blogs to display per page
 
   useEffect(() => {
     axios
@@ -16,7 +16,9 @@ export default function Blogs() {
       .then((response) => {
         // Reverse the order of blogs to show the latest one at the top
         const reversedBlogs = response.data.content.reverse();
-        setBlogs(reversedBlogs);
+        // Slice the first 10 blogs to get the top 10 latest ones
+        const latestBlogs = reversedBlogs.slice(0, 10);
+        setBlogs(latestBlogs);
         setLoading(false);
       })
       .catch((error) => {
@@ -59,7 +61,10 @@ export default function Blogs() {
             >
               <div className={BlogsStyles.card}>
                 <div className={BlogsStyles.cardImage}>
-                  <img src={`${import.meta.env.VITE_BASE_URL}${blog.image}`} alt="Blog" />
+                  <img
+                    src={`${import.meta.env.VITE_BASE_URL}${blog.image}`}
+                    alt="Blog"
+                  />
                 </div>
                 <div className={BlogsStyles.cardContent}>
                   <div className={BlogsStyles.cardCategory}>
