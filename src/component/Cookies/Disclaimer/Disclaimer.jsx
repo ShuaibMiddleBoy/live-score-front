@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const Disclaimer = () => {
   const [accepted, setAccepted] = useState(false);
-  const [width, setWidth] = useState('100%');
+  const [width, setWidth] = useState('70%');
 
   const handleAccept = () => {
     // Make a POST request to the API to store cookie acceptance
@@ -30,6 +30,7 @@ const Disclaimer = () => {
   }, [hasAccepted]);
 
   return (
+    <div className={DisclaimerStyles.mainDisclaimer} >
     <div className={DisclaimerStyles.disclaimer} style={{ width: width }}>
       {!hasAccepted && !accepted && (
         <div className={DisclaimerStyles.content}>
@@ -39,6 +40,7 @@ const Disclaimer = () => {
           <button className={DisclaimerStyles.Disclaimerbtn} onClick={handleAccept}>Accept</button>
         </div>
       )}
+    </div>
     </div>
   );
 };

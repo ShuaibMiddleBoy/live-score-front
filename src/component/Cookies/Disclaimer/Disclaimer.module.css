@@ -1,15 +1,21 @@
+.mainDisclaimer {
+  width: 100%;
+  position: fixed;
+  bottom: 20px;
+  left: 0;
+  z-index: 999;
+}
+
 .disclaimer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background-color: #1D1D1D;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    z-index: 999;
-    transition: width 0.5s ease; 
-  }
+  margin: auto;
+  background-color: #3d3d3d;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  transition: width 0.5s ease, box-shadow 0.5s ease;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
   
   .content {
     display: flex;

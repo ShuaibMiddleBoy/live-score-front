@@ -23,7 +23,8 @@ import { useState } from "react";
 import UploadVideos from "./component/UploadVideos/UploadVideos";
 import GetVideos from "./component/GetVideos/GetVideos";
 import Chatbot from "./component/Chatbot/Chatbot";
-import LiveScoreHome from "./component/Live Score/LiveScoreHome";
+import NewHomePage from "./component/Home/NewHomePage";
+import LiveScore from "./component/Live Score/LiveScore";
 
 function App() {
   const [disclaimerAccepted, setDisclaimerAccepted] = useState(false);
@@ -37,7 +38,8 @@ function App() {
       {!disclaimerAccepted && <Disclaimer onAccept={handleAcceptDisclaimer} />}
       <Routes>
         <Route path="/" element={<Home />}>
-          <Route path="/" element={<LiveScoreHome />} />
+          <Route path="/" element={<NewHomePage />} />
+          <Route path="/live-scores" element={<LiveScore />} />
           <Route path="/schedule" element={<Schedule />} />
           <Route path="/news" element={<News />} />
           <Route path="/rankings/men" element={<MenRankings />} />

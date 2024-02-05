@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import "./Header.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
-import logo from '../../assets/logo-removebg-preview.png'
+import logo from "../../assets/logo-removebg-preview.png";
 import {
+  Home as HomeIcon,
   Menu as MenuIcon,
   Close as CloseIcon,
   SportsSoccer as SportsSoccerIcon,
@@ -13,12 +14,12 @@ import {
   ArrowDropDown as ArrowDropDownIcon,
   Videocam as VideocamIcon,
   SportsCricket as SportsCricketIcon,
-  Android as RobotIcon
+  Android as RobotIcon,
 } from "@mui/icons-material";
 import axios from "axios";
 
 export default function Header() {
-  const [activeMenu, setActiveMenu] = useState("live-scores");
+  const [activeMenu, setActiveMenu] = useState("home-page");
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(false);
   const [userLoggedIn, setUserLoggedIn] = useState(false);
@@ -77,18 +78,18 @@ export default function Header() {
   useEffect(() => {
     const currentPathname = location.pathname;
 
-    let newActiveMenu = "live-scores";
-    if (currentPathname === "/schedule") {
+    let newActiveMenu = "home-page";
+    if (currentPathname === "/live-scores") {
+      newActiveMenu = "live-scores";
+    } else if (currentPathname === "/schedule") {
       newActiveMenu = "schedule";
     } else if (currentPathname === "/news") {
       newActiveMenu = "news";
-    }else if (currentPathname === "/videos") {
+    } else if (currentPathname === "/videos") {
       newActiveMenu = "videos";
-    } 
-    else if (currentPathname === "/chatbot") {
+    } else if (currentPathname === "/chatbot") {
       newActiveMenu = "chatbot";
-    } 
-    else if (
+    } else if (
       currentPathname === "/blogs" ||
       currentPathname === "/upload-blogs"
     ) {
@@ -103,20 +104,27 @@ export default function Header() {
   return (
     <div className={`header`}>
       <div className="logo">
-        <img
-          src={logo}
-          alt="Logo"
-        />
+        <img src={logo} alt="Logo" />
       </div>
       <div className={`nav-links ${showNavbar && "active"}`}>
         <ul>
+          <li
+            className={activeMenu === "home-page" ? "nav-link-active" : ""}
+            onClick={() => {
+              handleMenuItemClick("home-page");
+            }}
+          >
+            <Link to="/">
+              <HomeIcon /> Home
+            </Link>
+          </li>
           <li
             className={activeMenu === "live-scores" ? "nav-link-active" : ""}
             onClick={() => {
               handleMenuItemClick("live-scores");
             }}
           >
-            <Link to="/">
+            <Link to="/live-scores">
               <SportsSoccerIcon /> Live Scores
             </Link>
           </li>
@@ -132,7 +140,7 @@ export default function Header() {
           </li>
           <li className={activeMenu === "videos" ? "nav-link-active" : ""}>
             <Link to="/videos">
-            <VideocamIcon /> Videos
+              <VideocamIcon /> Videos
             </Link>
           </li>
           <li className={activeMenu === "blogs" ? "nav-link-active" : ""}>
@@ -141,12 +149,14 @@ export default function Header() {
             </Link>
           </li>
           {userLoggedIn ? (
-          <li className={activeMenu === "chatbot" ? "nav-link-active" : ""}>
-            <Link to="/chatbot">
-            <RobotIcon /> Chatbot
-            </Link>
-          </li>
-          ) : ""}
+            <li className={activeMenu === "chatbot" ? "nav-link-active" : ""}>
+              <Link to="/chatbot">
+                <RobotIcon /> Chatbot
+              </Link>
+            </li>
+          ) : (
+            ""
+          )}
           <li
             className={`nav-item-dropdown ${
               activeMenu === "rankings" ? "nav-link-active" : ""
@@ -192,7 +202,9 @@ export default function Header() {
                   </button>
                 </div>
               </>
-            ) : ""}
+            ) : (
+              ""
+            )}
           </li>
         </ul>
       </div>
