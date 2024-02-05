@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./Header.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
+import logo from '../../assets/logo-removebg-preview.png'
 import {
   Menu as MenuIcon,
   Close as CloseIcon,
@@ -103,7 +104,7 @@ export default function Header() {
     <div className={`header`}>
       <div className="logo">
         <img
-          src="../../../public/assests/logo-removebg-preview.png"
+          src={logo}
           alt="Logo"
         />
       </div>
