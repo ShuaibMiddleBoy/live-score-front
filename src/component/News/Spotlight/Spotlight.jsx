@@ -3,6 +3,7 @@ import axios from "axios";
 import SpotlightStyles from "../News.module.css";
 import { useNavigate } from "react-router-dom";
 import { PulseLoader } from "react-spinners";
+import { Helmet } from "react-helmet-async"; 
 
 export default function Spotlight() {
   const [newsData, setNewsData] = useState([]);
@@ -94,6 +95,16 @@ export default function Spotlight() {
 
   return (
     <div>
+      <Helmet>
+        <meta
+          name="Spotlight description"
+          content="Stay in the know with our spotlight on breaking cricket news. Get the latest updates, in-depth coverage, and real-time alerts. Your go-to source for the latest in cricket!"
+        />
+      </Helmet>
+      <h3 className={SpotlightStyles.headingContainer}>
+      Breaking News | Spotlight News on Cricket
+      </h3>
+    <div>
       {loading ? (
         <div className={SpotlightStyles.spinnerContainer}>
           <div className={SpotlightStyles.spinner}>
@@ -132,6 +143,7 @@ export default function Spotlight() {
           ))}
         </div>
       )}
+    </div>
     </div>
   );
 }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import StylesTestMatches from "../../Matches.module.css";
 import { PulseLoader } from "react-spinners";
+import { Helmet } from "react-helmet-async"; 
 
 export default function T20Matches() {
   const [rankings, setRankings] = useState([]);
@@ -48,6 +49,18 @@ export default function T20Matches() {
           </div>
         </div>
       ) : (
+        <>
+        <div>
+      <Helmet>
+        <meta
+          name="T20 Men’s Team description"
+          content="Stay updated with the latest Men’s ICC Cricket Team Rankings for T20 cricket. Explore live updates, discover the top teams, and follow the dynamic world of T20 cricket!"
+        />
+      </Helmet>
+      <h3 className={StylesTestMatches.headingContainer} style={{ color: "#ff6b00", fontSize: "20px",marginBottom: "15px" }}>
+      Men’s ICC Cricket Team Rankings | T20 Cricket
+      </h3>
+      </div>
         <table className={StylesTestMatches.rankingsTable}>
           <thead>
             <tr>
@@ -80,6 +93,7 @@ export default function T20Matches() {
             ))}
           </tbody>
         </table>
+        </>
       )}
     </div>
   );

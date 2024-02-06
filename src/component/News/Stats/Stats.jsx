@@ -3,6 +3,7 @@ import axios from "axios"; // Import Axios
 import StatsStyles from "../News.module.css";
 import { useNavigate } from "react-router-dom";
 import { PulseLoader } from "react-spinners";
+import { Helmet } from "react-helmet-async"; 
 
 export default function Stats() {
   const [newsData, setNewsData] = useState([]);
@@ -94,6 +95,16 @@ export default function Stats() {
 
   return (
     <div>
+      <Helmet>
+        <meta
+          name="Stat description"
+          content="Explore cricket news with a statistical twist. Get live updates, in-depth analysis, and breaking news, all focused on the intricate world of cricket statistics. Stay informed!"
+        />
+      </Helmet>
+      <h3 className={StatsStyles.headingContainer}>
+      Cricket News | Live Cricket Stat Alerts
+      </h3>
+    <div>
       {loading ? (
         <div className={StatsStyles.spinnerContainer}>
           <div className={StatsStyles.spinner}>
@@ -132,6 +143,7 @@ export default function Stats() {
           ))}
         </div>
       )}
+    </div>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import AllStoriesStyles from "../News.module.css";
 import { useNavigate } from "react-router-dom";
 import { PulseLoader } from "react-spinners";
 import axios from 'axios';
+import { Helmet } from "react-helmet-async"; 
 
 export default function AllStories() {
   const [newsData, setNewsData] = useState([]);
@@ -72,6 +73,16 @@ export default function AllStories() {
 
   return (
     <div>
+      <Helmet>
+        <meta
+          name="All Stories description"
+          content="Stay informed with our cricket news hub. Get the latest updates, breaking news, and in-depth coverage of all things cricket in real-time. Your go-to source for cricket updates!"
+        />
+      </Helmet>
+      <h3 className={AllStoriesStyles.headingContainer}>
+      Cricket News | Cricket Updates | Live Alerts
+      </h3>
+    <div>
       {loading ? (
         <div className={AllStoriesStyles.spinnerContainer}>
           <div className={AllStoriesStyles.spinner}>
@@ -112,6 +123,7 @@ export default function AllStories() {
           ))}
         </div>
       )}
+    </div>
     </div>
   );
 }

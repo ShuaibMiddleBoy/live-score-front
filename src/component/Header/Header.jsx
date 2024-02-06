@@ -4,7 +4,6 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
 import logo from "../../assets/logo-removebg-preview.png";
 import {
-  Home as HomeIcon,
   Menu as MenuIcon,
   Close as CloseIcon,
   SportsSoccer as SportsSoccerIcon,
@@ -19,7 +18,7 @@ import {
 import axios from "axios";
 
 export default function Header() {
-  const [activeMenu, setActiveMenu] = useState("home-page");
+  const [activeMenu, setActiveMenu] = useState("");
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(false);
   const [userLoggedIn, setUserLoggedIn] = useState(false);
@@ -78,7 +77,7 @@ export default function Header() {
   useEffect(() => {
     const currentPathname = location.pathname;
 
-    let newActiveMenu = "home-page";
+    let newActiveMenu = "";
     if (currentPathname === "/live-scores") {
       newActiveMenu = "live-scores";
     } else if (currentPathname === "/schedule") {
@@ -103,21 +102,13 @@ export default function Header() {
 
   return (
     <div className={`header`}>
-      <div className="logo">
-        <img src={logo} alt="Logo" />
-      </div>
+      <Link to="/">
+        <div className="logo">
+          <img src={logo} alt="Logo" />
+        </div>
+      </Link>
       <div className={`nav-links ${showNavbar && "active"}`}>
         <ul>
-          <li
-            className={activeMenu === "home-page" ? "nav-link-active" : ""}
-            onClick={() => {
-              handleMenuItemClick("home-page");
-            }}
-          >
-            <Link to="/">
-              <HomeIcon /> Home
-            </Link>
-          </li>
           <li
             className={activeMenu === "live-scores" ? "nav-link-active" : ""}
             onClick={() => {

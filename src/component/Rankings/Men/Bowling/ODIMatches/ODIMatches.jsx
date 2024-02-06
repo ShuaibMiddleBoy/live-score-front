@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import StylesTestMatches from "../../Matches.module.css";
 import { PulseLoader } from "react-spinners";
+import { Helmet } from "react-helmet-async"; 
 
 export default function ODIMatches() {
   const [rankings, setRankings] = useState([]);
@@ -47,6 +48,18 @@ export default function ODIMatches() {
           </div>
         </div>
       ) : (
+        <>
+        <div>
+      <Helmet>
+        <meta
+          name="ODI Men’s Bowling description"
+          content="Stay updated with the latest Men’s ICC Bowling Cricket Rankings for ODI cricket. Explore live updates, discover the top bowlers, and follow the dynamic world of ODI cricket!"
+        />
+      </Helmet>
+      <h3 className={StylesTestMatches.headingContainer} style={{ color: "#ff6b00", fontSize: "20px",marginBottom: "15px" }}>
+      Men’s ICC Bowling Cricket Rankings | ODI Cricket
+      </h3>
+      </div>
         <table className={StylesTestMatches.rankingsTable}>
           <thead>
             <tr>
@@ -79,6 +92,7 @@ export default function ODIMatches() {
             ))}
           </tbody>
         </table>
+        </>
       )}
     </div>
   );

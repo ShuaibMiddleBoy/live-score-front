@@ -28,12 +28,6 @@
   }
 
   .allrounders .buttonContainer {
-    flex-direction: column;
     align-items: center;
-  }
-
-  .allrounders .optionButton {
-    font-size: 14px;
-    padding: 3px 8px;
   }
 }

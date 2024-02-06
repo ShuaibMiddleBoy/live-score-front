@@ -3,6 +3,7 @@ import axios from "axios";
 import styles from "../Recent.module.css";
 import { PulseLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async"; 
 
 export default function League() {
   const [matchInfo, setMatchInfo] = useState([]);
@@ -64,6 +65,15 @@ export default function League() {
 
   return (
     <div>
+      <Helmet>
+        <meta
+          name="Recent League description"
+          content="Explore recent domestic cricket league scorecards and plan your schedule with our upcoming game calendar. Stay updated on league match results for a complete cricket experience."
+        />
+      </Helmet>
+      <h3 className={styles.headingContainer}>
+      Domestic League Scoreboard | Domestic Cricket
+      </h3>
       <div className={styles.spinnerContainer}>
         <div className={styles.spinner}>
           <PulseLoader color={"#ff6b00"} loading={loading} size={15} />

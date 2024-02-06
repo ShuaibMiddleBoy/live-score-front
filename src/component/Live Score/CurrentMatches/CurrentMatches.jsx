@@ -26,7 +26,6 @@ export default function CurrentMatches() {
 
   return (
     <div className={CurrentMatchesStyles.mainTabMenu}>
-      <h2>Live Cricket Score</h2>
       <div className={CurrentMatchesStyles.tabMenu}>
         <button
           className={`${CurrentMatchesStyles.tabButton} ${

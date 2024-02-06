@@ -2,6 +2,7 @@
   display: flex;
   gap: 10px;
   margin-top: 10px;
+  margin-left: 10px;
 }
 
 .team h2 {
@@ -10,6 +11,7 @@
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-style: normal;
+  margin-left: 10px;
 }
 
 .team .optionButton {
@@ -31,7 +33,7 @@
 /* Media query for screens with a maximum width of 700px */
 @media (max-width: 700px) {
   .team .buttonContainer {
-    flex-direction: column; 
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
   }

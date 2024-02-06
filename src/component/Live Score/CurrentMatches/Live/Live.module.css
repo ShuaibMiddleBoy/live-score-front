@@ -32,7 +32,14 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 10px;
 }
-
+.headingContainer{
+  font-size: 20px;
+  color: #ff6b00;
+  margin-top: 10px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
 .Container h2 {
   font-size: 16px;
   font-weight: 500;
@@ -246,7 +253,11 @@
 
 @media (max-width: 700px) {
   .buttonContainer {
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
+  }
+
+  .optionButton {
+    width: auto;
   }
 }

@@ -27,7 +27,6 @@ export default function MenRankings() {
   };
   return (
     <div className={RankingsStyles.mainTabMenu}>
-      <h2>ICC Cricket Rankings - Men's</h2>
       <div className={RankingsStyles.tabMenu}>
         <button
           className={`${RankingsStyles.tabButton} ${

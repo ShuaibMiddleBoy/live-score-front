@@ -3,6 +3,7 @@ import PrimaryNewsStyles from "../News.module.css";
 import { useNavigate } from "react-router-dom";
 import { PulseLoader } from "react-spinners";
 import axios from 'axios';
+import { Helmet } from "react-helmet-async"; 
 
 export default function PrimaryNews() {
   const [newsData, setNewsData] = useState([]);
@@ -93,6 +94,16 @@ export default function PrimaryNews() {
 
   return (
     <div>
+      <Helmet>
+        <meta
+          name="Interviews description"
+          content="Dive into the excitement of live cricket blogs, offering real-time updates and vibrant commentary. Immerse yourself in the game with our dynamic insights and stay connected with the latest cricket action!"
+        />
+      </Helmet>
+      <h3 className={PrimaryNewsStyles.headingContainer}>
+      Live Cricket Blogs | Cricket Updates
+      </h3>
+    <div>
       {loading ? (
         <div className={PrimaryNewsStyles.spinnerContainer}>
           <div className={PrimaryNewsStyles.spinner}>
@@ -131,6 +142,7 @@ export default function PrimaryNews() {
           ))}
         </div>
       )}
+    </div>
     </div>
   );
 }

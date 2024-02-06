@@ -3,6 +3,7 @@ import axios from "axios";
 import styles from "../Live.module.css";
 import { PulseLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async"; 
 
 export default function Women() {
   const [matchInfo, setMatchInfo] = useState([]);
@@ -64,6 +65,20 @@ export default function Women() {
 
   return (
     <div>
+      <Helmet>
+        <meta
+          name="Live Women description"
+          content="Stay tuned to live women's cricket scores and in-depth scorecards. Catch the excitement of the game with real-time updates, ensuring you don't miss a moment of women's cricket action!"
+        />
+      </Helmet>
+      <h3 className={styles.headingContainer}>
+      Women's Cricket Live Scores | Women Cricket
+      </h3>
+      <div className={styles.spinnerContainer}>
+        <div className={styles.spinner}>
+          <PulseLoader color={"#ff6b00"} loading={loading} size={15} />
+        </div>
+      </div>
       <div className={styles.spinnerContainer}>
         <div className={styles.spinner}>
           <PulseLoader color={"#ff6b00"} loading={loading} size={15} />

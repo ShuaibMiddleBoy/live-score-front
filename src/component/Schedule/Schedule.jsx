@@ -13,7 +13,6 @@ export default function Schedule() {
   return (
     <>
       <div className={style.wrapper}>
-        <h2>Cricket Schedule</h2>
         <div className={style.scheduleTabs}>
           <button
             className={`${style.tabBtn}  ${

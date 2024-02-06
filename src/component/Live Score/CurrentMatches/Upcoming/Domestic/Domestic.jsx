@@ -3,6 +3,7 @@ import axios from "axios";
 import styles from "../Upcoming.module.css";
 import { PulseLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async"; 
 
 export default function Domestic() {
   const [matchInfo, setMatchInfo] = useState([]);
@@ -64,6 +65,15 @@ export default function Domestic() {
 
   return (
     <div>
+      <Helmet>
+        <meta
+          name="Upcoming Domestic description"
+          content="Uncover the excitement of upcoming domestic league cricket. Stay in the loop with our detailed schedule, ensuring you catch every live moment of the league action. Don't miss a match!"
+        />
+      </Helmet>
+      <h3 className={styles.headingContainer}>
+      Upcoming Domestic League Games | Domestic League
+      </h3>
       <div className={styles.spinnerContainer}>
         <div className={styles.spinner}>
           <PulseLoader color={"#ff6b00"} loading={loading} size={15} />

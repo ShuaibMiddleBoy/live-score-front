@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import InterviewsStyles from "../News.module.css";
 import { PulseLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async"; 
 
 export default function Interviews() {
   const [newsData, setNewsData] = useState([]);
@@ -79,6 +80,16 @@ export default function Interviews() {
 
   return (
     <div>
+      <Helmet>
+        <meta
+          name="Interviews description"
+          content="Dive into exclusive cricket interviews and highlights. Explore in-depth player insights, memorable moments, and breaking news, bringing you closer to the heart of the game!"
+        />
+      </Helmet>
+      <h3 className={InterviewsStyles.headingContainer}>
+      Exclusive Cricket Interviews | Player Insights
+      </h3>
+    <div>
       {loading ? (
         <div className={InterviewsStyles.spinnerContainer}>
           <div className={InterviewsStyles.spinner}>
@@ -119,6 +130,7 @@ export default function Interviews() {
           ))}
         </div>
       )}
+    </div>
     </div>
   );
 }

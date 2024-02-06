@@ -1,29 +1,40 @@
-/* Recent.module.css */
 .recent {
-  .buttonContainer {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-  }
-
-  /* Styles for the buttons */
-  .optionButton {
-    border-radius: 20px;
-    color: #222;
-    cursor: pointer;
-    background-color: #CFE0DB;
-    padding: 5px 20px;
-    font-size: 12px;
-    border: none;
-    transition: background-color 0.3s ease, color 0.3s ease;
-  }
-
-  /* Styles for the selected button */
-  .optionButton.selected {
-    background-color: #ff6b00;
-    color: #fff;
-  }
+  display: flex;
+  flex-direction: column;
 }
+
+.recent .buttonContainer {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+.headingContainer{
+  font-size: 20px;
+  color: #ff6b00;
+  margin-top: 10px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.recent .optionButton {
+  border-radius: 20px;
+  color: #222;
+  cursor: pointer;
+  background-color: #CFE0DB;
+  padding: 5px 20px;
+  font-size: 12px;
+  border: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.recent .optionButton.selected {
+  background-color: #ff6b00;
+  color: #fff;
+}
+
 .Container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -55,8 +66,6 @@
   background-color: #1D1D1D;
   transition: all .5s ease-in-out;
 }
-
-
 
 .primaryMatchHeader {
   display: flex;
@@ -143,7 +152,7 @@
 .spinnerContainer {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   width: 100%;
 }
 
@@ -181,7 +190,6 @@
 
 }
 
-
 @media screen and (max-width:466px) {
   .matchCard {
     width: 300px;
@@ -191,10 +199,6 @@
     margin-top: 15px;
   }
 
-
-
-
-
   .Container h2 {
     font-size: 13px;
   }
@@ -203,11 +207,9 @@
     font-size: 12px;
   }
 
-
   .teamName {
     font-size: 12px;
   }
-
 
   .matchResult {
     margin-top: 10px;
@@ -249,9 +251,10 @@
   }
 
 }
+
 @media (max-width: 700px) {
   .buttonContainer {
-    flex-direction: column;
-    align-items: center; 
+    justify-content: center;
+    align-items: center;
   }
 }

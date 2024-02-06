@@ -3,6 +3,7 @@ import axios from "axios";
 import styles from "../Live.module.css";
 import { PulseLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async"; 
 
 export default function International() {
   const [matchInfo, setMatchInfo] = useState([]);
@@ -65,6 +66,15 @@ export default function International() {
 
   return (
     <div>
+      <Helmet>
+        <meta
+          name="Live International description"
+          content="Experience the thrill of live cricket with our real-time score updates and detailed scorecards. Stay on top of the game with our comprehensive cricket coverage."
+        />
+      </Helmet>
+      <h3 className={styles.headingContainer}>
+      Live Domestic League Cricket | Domestic League Score
+      </h3>
       <div className={styles.spinnerContainer}>
         <div className={styles.spinner}>
           <PulseLoader color={"#ff6b00"} loading={loading} size={15} />

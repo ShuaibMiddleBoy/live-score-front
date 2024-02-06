@@ -3,6 +3,7 @@ import SpecialStyles from "../News.module.css";
 import { PulseLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import { Helmet } from "react-helmet-async"; 
 
 export default function Special() {
   const [newsData, setNewsData] = useState([]);
@@ -93,6 +94,16 @@ export default function Special() {
 
   return (
     <div>
+      <Helmet>
+        <meta
+          name="Special description"
+          content="Discover exclusive cricket updates and special news. Stay ahead with premium headlines and in-depth reports, providing a unique perspective on the latest happenings in the world of cricket!"
+        />
+      </Helmet>
+      <h3 className={SpecialStyles.headingContainer}>
+      Cricket news | Special Edition Cricket Alerts
+      </h3>
+    <div>
       {loading ? (
         <div className={SpecialStyles.spinnerContainer}>
           <div className={SpecialStyles.spinner}>
@@ -131,6 +142,7 @@ export default function Special() {
           ))}
         </div>
       )}
+    </div>
     </div>
   );
 }

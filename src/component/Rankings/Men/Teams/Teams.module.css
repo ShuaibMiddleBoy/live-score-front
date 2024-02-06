@@ -28,13 +28,6 @@
   }
 
   .teams .buttonContainer {
-    flex-direction: column;
     align-items: center;
-  }
-
-  /* Adjust button styles for smaller screens */
-  .teams .optionButton {
-    font-size: 14px;
-    padding: 3px 8px;
   }
 }

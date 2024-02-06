@@ -3,6 +3,7 @@ import axios from "axios";
 import styles from "../Upcoming.module.css";
 import { PulseLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async"; 
 
 export default function Women() {
   const [matchInfo, setMatchInfo] = useState([]);
@@ -64,6 +65,15 @@ export default function Women() {
 
   return (
     <div>
+      <Helmet>
+        <meta
+          name="Upcoming Women description"
+          content="Stay ahead with upcoming women's cricket updates and a detailed schedule. Don't miss a moment—follow live scores and ensure you're part of every thrilling match!"
+        />
+      </Helmet>
+      <h3 className={styles.headingContainer}>
+      Women Cricket Match Updates |Future Games
+      </h3>
       <div className={styles.spinnerContainer}>
         <div className={styles.spinner}>
           <PulseLoader color={"#ff6b00"} loading={loading} size={15} />

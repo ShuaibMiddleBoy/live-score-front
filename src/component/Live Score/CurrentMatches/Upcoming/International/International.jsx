@@ -3,6 +3,7 @@ import axios from "axios";
 import styles from "../Upcoming.module.css";
 import { PulseLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async"; 
 
 export default function International() {
   const [matchInfo, setMatchInfo] = useState([]);
@@ -64,6 +65,15 @@ export default function International() {
 
   return (
     <div>
+      <Helmet>
+        <meta
+          name="Upcoming International description"
+          content="Explore the excitement of upcoming live cricket matches with our comprehensive schedule. Stay ahead with real-time updates, ensuring you never miss a moment of the action!"
+        />
+      </Helmet>
+      <h3 className={styles.headingContainer}>
+      Upcoming Match Updates | Live Cricket
+      </h3>
       <div className={styles.spinnerContainer}>
         <div className={styles.spinner}>
           <PulseLoader color={"#ff6b00"} loading={loading} size={15} />

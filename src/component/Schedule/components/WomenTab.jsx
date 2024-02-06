@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import style from "../Schedule.module.css";
 import axios from "axios";
 import { PulseLoader } from "react-spinners";
+import { Helmet } from "react-helmet-async"; 
 
 const WomenTab = () => {
   const [data, setData] = useState([]);
@@ -35,6 +36,16 @@ const WomenTab = () => {
   }, []);
 
   return (
+    <div>
+      <Helmet>
+        <meta
+          name="T20 schedule description"
+          content="Stay tuned for the excitement of upcoming T20 leagues. Explore our detailed schedule, catch live updates, and don't miss a single thrilling moment in the world of T20 cricket!"
+        />
+      </Helmet>
+      <h3 className={style.headingContainer}>
+      T20 Leagues schedule & Matches | Next T20 fixture
+      </h3>
     <div className={style.tabContainer}>
       {loading ? (
         <div className={style.spinnerContainer}>
@@ -104,6 +115,7 @@ const WomenTab = () => {
           </div>
         ))
       )}
+    </div>
     </div>
   );
 };
