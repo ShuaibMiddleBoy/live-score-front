@@ -13,10 +13,9 @@ export default function FullBlogs() {
   const fetchBlogById = async () => {
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_BASE_URL}chatbots/get-generated-content/${blogId}`
+        `http://localhost:8000/blogs/get-blog/${blogId}`
       );
-      setBlog(response.data.content); 
-      console.log(response.data.content)
+      setBlog(response.data); // Assuming response.data contains the entire blog object
       setLoading(false);
     } catch (error) {
       console.error("Error fetching blog by ID:", error);
@@ -43,18 +42,18 @@ export default function FullBlogs() {
             • Last updated on {new Date(blog.updatedAt).toLocaleString()}
           </p>
           <div className={styles.image}>
-            <img src={`${import.meta.env.VITE_BASE_URL}${blog.image}`} alt="Blog" />
+            <img src={`${import.meta.env.VITE_BASE_URL}${blog.Image}`} alt="Blog" />
           </div>
           <div className={styles.paragraphs}>
-            {blog.description ? (
-              <p>{blog.description}</p>
+            {blog.Description ? (
+              <p>{blog.Description}</p>
             ) : (
-              <p style={{"color" : "#aaa"}}>No content available</p>
+              <p style={{ color: "#aaa" }}>No content available</p>
             )}
           </div>
         </>
       ) : (
-        <p style={{"color" : "#aaa"}}>No blog data available</p>
+        <p style={{ color: "#aaa" }}>No blog data available</p>
       )}
     </div>
   );

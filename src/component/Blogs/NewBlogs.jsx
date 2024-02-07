@@ -12,10 +12,10 @@ export default function NewBlogs() {
 
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_BASE_URL}chatbots/get-generated-content`)
+      .get(`${import.meta.env.VITE_BASE_URL}blogs/get-blogs`)
       .then((response) => {
         // Reverse the order of blogs to show the latest one at the top
-        const reversedBlogs = response.data.content.reverse();
+        const reversedBlogs = response.data.reverse();
         // Slice the first 10 blogs to get the top 10 latest ones
         const latestBlogs = reversedBlogs.slice(0, 10);
         setBlogs(latestBlogs);
@@ -28,12 +28,17 @@ export default function NewBlogs() {
   }, []);
 
   const truncateDescription = (description) => {
+    if (!description) {
+      return ""; 
+    }
+  
     const words = description.split(" ");
     if (words.length > 15) {
       return words.slice(0, 15).join(" ") + "...";
     }
     return description;
   };
+  
 
   const paginate = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -62,19 +67,19 @@ export default function NewBlogs() {
               <div className={BlogsStyles.card}>
                 <div className={BlogsStyles.cardImage}>
                   <img
-                    src={`${import.meta.env.VITE_BASE_URL}${blog.image}`}
+                    src={`${import.meta.env.VITE_BASE_URL}${blog.Image}`}
                     alt="Blog"
                   />
                 </div>
                 <div className={BlogsStyles.cardContent}>
                   <div className={BlogsStyles.cardCategory}>
-                    <span>{blog.title}</span>
+                    <span>{blog.Title}</span>
                   </div>
                   <div className={BlogsStyles.cardHeading}>
-                    <h3>{blog.title}</h3>
+                    <h3>{blog.Title}</h3>
                   </div>
                   <div className={BlogsStyles.cardPara}>
-                    <p>{truncateDescription(blog.description)}</p>
+                    <p>{truncateDescription(blog.Description)}</p>
                   </div>
                   <div className={BlogsStyles.cardTime}>
                     <span>{new Date(blog.createdAt).toLocaleString()}</span>
