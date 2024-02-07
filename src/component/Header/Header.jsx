@@ -139,15 +139,15 @@ export default function Header() {
               <LibraryBooksIcon /> Blogs
             </Link>
           </li>
-          {userLoggedIn ? (
-            <li className={activeMenu === "chatbot" ? "nav-link-active" : ""}>
-              <Link to="/chatbot">
-                <RobotIcon /> Chatbot
-              </Link>
-            </li>
+          {/* {userLoggedIn ? (
+            // <li className={activeMenu === "chatbot" ? "nav-link-active" : ""}>
+            //   <Link to="/chatbot">
+            //     <RobotIcon /> Chatbot
+            //   </Link>
+            // </li>
           ) : (
             ""
-          )}
+          )} */}
           <li
             className={`nav-item-dropdown ${
               activeMenu === "rankings" ? "nav-link-active" : ""
