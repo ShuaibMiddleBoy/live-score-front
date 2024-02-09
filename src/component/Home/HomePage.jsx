@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import HomePageSyles from "./HomePage.module.css";
 import { PulseLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
+import HomePageSyles from "./HomePage.module.css";
 
 export default function HomePage() {
   const [matchInfo, setMatchInfo] = useState({
@@ -30,36 +30,43 @@ export default function HomePage() {
         // Retrieve all types of matches
         const allMatches = response.data.typeMatches;
 
-        // Filter and store matches in separate arrays based on matchType
-        const domesticMatches = allMatches.find(
-          (matchType) => matchType.matchType === "Domestic"
-        );
-        const internationalMatches = allMatches.find(
-          (matchType) => matchType.matchType === "International"
-        );
-        const leagueMatches = allMatches.find(
-          (matchType) => matchType.matchType === "League"
-        );
-        const womenMatches = allMatches.find(
-          (matchType) => matchType.matchType === "Women"
-        );
-
-        const matches = {
-          Domestic: domesticMatches
-            ? domesticMatches.seriesMatches[0].seriesAdWrapper.matches
-            : [],
-          International: internationalMatches
-            ? internationalMatches.seriesMatches[0].seriesAdWrapper.matches
-            : [],
-          League: leagueMatches
-            ? leagueMatches.seriesMatches[0].seriesAdWrapper.matches
-            : [],
-          Women: womenMatches
-            ? womenMatches.seriesMatches[0].seriesAdWrapper.matches
-            : [],
+        // Initialize objects to store selected matches
+        let selectedMatches = {
+          Domestic: [],
+          International: [],
+          League: [],
+          Women: [],
         };
 
-        setMatchInfo(matches);
+        // Loop through allMatches to select the first few matches for each type
+        allMatches.forEach((matchType) => {
+          switch (matchType.matchType) {
+            case "Domestic":
+              selectedMatches.Domestic.push(
+                ...matchType.seriesMatches[0].seriesAdWrapper.matches.slice(0, 1)
+              );
+              break;
+            case "International":
+              selectedMatches.International.push(
+                ...matchType.seriesMatches[0].seriesAdWrapper.matches.slice(0, 2)
+              );
+              break;
+            case "League":
+              selectedMatches.League.push(
+                ...matchType.seriesMatches[0].seriesAdWrapper.matches.slice(0, 1)
+              );
+              break;
+            case "Women":
+              selectedMatches.Women.push(
+                ...matchType.seriesMatches[0].seriesAdWrapper.matches.slice(0, 2)
+              );
+              break;
+            default:
+              break;
+          }
+        });
+
+        setMatchInfo(selectedMatches);
         setLoading(false);
       } catch (error) {
         console.error(error);
