@@ -38,33 +38,84 @@ export default function HomePage() {
           Women: [],
         };
 
-        // Loop through allMatches to select the first few matches for each type
+        // Variable to keep track of total matches selected
+        let totalSelectedMatches = 0;
+
+        // Loop through allMatches to select matches from each type until total count reaches 6
         allMatches.forEach((matchType) => {
-          switch (matchType.matchType) {
-            case "Domestic":
-              selectedMatches.Domestic.push(
-                ...matchType.seriesMatches[0].seriesAdWrapper.matches.slice(0, 1)
-              );
-              break;
-            case "International":
-              selectedMatches.International.push(
-                ...matchType.seriesMatches[0].seriesAdWrapper.matches.slice(0, 2)
-              );
-              break;
-            case "League":
-              selectedMatches.League.push(
-                ...matchType.seriesMatches[0].seriesAdWrapper.matches.slice(0, 1)
-              );
-              break;
-            case "Women":
-              selectedMatches.Women.push(
-                ...matchType.seriesMatches[0].seriesAdWrapper.matches.slice(0, 2)
-              );
-              break;
-            default:
-              break;
+          if (totalSelectedMatches < 6) {
+            switch (matchType.matchType) {
+              case "Domestic":
+                selectedMatches.Domestic.push(
+                  ...matchType.seriesMatches[0].seriesAdWrapper.matches.slice(0, 1)
+                );
+                totalSelectedMatches += 1;
+                break;
+              case "International":
+                selectedMatches.International.push(
+                  ...matchType.seriesMatches[0].seriesAdWrapper.matches.slice(0, 2)
+                );
+                totalSelectedMatches += 2;
+                break;
+              case "League":
+                selectedMatches.League.push(
+                  ...matchType.seriesMatches[0].seriesAdWrapper.matches.slice(0, 1)
+                );
+                totalSelectedMatches += 1;
+                break;
+              case "Women":
+                selectedMatches.Women.push(
+                  ...matchType.seriesMatches[0].seriesAdWrapper.matches.slice(0, 2)
+                );
+                totalSelectedMatches += 2;
+                break;
+              default:
+                break;
+            }
           }
         });
+
+        // If still fewer than 6 matches have been selected, fetch additional matches from any type
+        if (totalSelectedMatches < 6) {
+          allMatches.forEach((matchType) => {
+            if (totalSelectedMatches < 6) {
+              const remaining = 6 - totalSelectedMatches;
+              const matchesToAdd = Math.min(
+                remaining,
+                matchType.seriesMatches[0].seriesAdWrapper.matches.length
+              );
+
+              switch (matchType.matchType) {
+                case "Domestic":
+                  selectedMatches.Domestic.push(
+                    ...matchType.seriesMatches[0].seriesAdWrapper.matches.slice(0, matchesToAdd)
+                  );
+                  totalSelectedMatches += matchesToAdd;
+                  break;
+                case "International":
+                  selectedMatches.International.push(
+                    ...matchType.seriesMatches[0].seriesAdWrapper.matches.slice(0, matchesToAdd)
+                  );
+                  totalSelectedMatches += matchesToAdd;
+                  break;
+                case "League":
+                  selectedMatches.League.push(
+                    ...matchType.seriesMatches[0].seriesAdWrapper.matches.slice(0, matchesToAdd)
+                  );
+                  totalSelectedMatches += matchesToAdd;
+                  break;
+                case "Women":
+                  selectedMatches.Women.push(
+                    ...matchType.seriesMatches[0].seriesAdWrapper.matches.slice(0, matchesToAdd)
+                  );
+                  totalSelectedMatches += matchesToAdd;
+                  break;
+                default:
+                  break;
+              }
+            }
+          });
+        }
 
         setMatchInfo(selectedMatches);
         setLoading(false);
