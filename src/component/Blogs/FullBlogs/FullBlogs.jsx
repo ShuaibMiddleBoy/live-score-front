@@ -13,7 +13,7 @@ export default function FullBlogs() {
   const fetchBlogById = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/blogs/get-blog/${blogId}`
+        `${import.meta.env.VITE_BASE_URL}blogs/get-blog/${blogId}`
       );
       setBlog(response.data); // Assuming response.data contains the entire blog object
       setLoading(false);
