@@ -15,7 +15,8 @@ export default function FullBlogs() {
       const response = await axios.get(
         `${import.meta.env.VITE_BASE_URL}blogs/get-blog/${blogId}`
       );
-      setBlog(response.data); // Assuming response.data contains the entire blog object
+      setBlog(response.data); 
+      console.log(response.data)
       setLoading(false);
     } catch (error) {
       console.error("Error fetching blog by ID:", error);
@@ -43,6 +44,9 @@ export default function FullBlogs() {
           </p>
           <div className={styles.image}>
             <img src={`${import.meta.env.VITE_BASE_URL}${blog.Image}`} alt="Blog" />
+          </div>
+          <div className={styles.title}>
+          <p>{blog.Title}</p>
           </div>
           <div className={styles.paragraphs}>
             {blog.Description ? (
