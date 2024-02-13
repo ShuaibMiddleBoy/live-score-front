@@ -9,6 +9,13 @@ export default function FullBlogs() {
   const [blog, setBlog] = useState(null);
   const { blogId } = useParams();
 
+  // Function to render paragraphs
+  const renderParagraphs = (description) => {
+    return description.split('\n').map((paragraph, index) => (
+      <p key={index}>{paragraph}</p>
+    ));
+  };
+
   // Fetch an individual blog by its ID
   const fetchBlogById = async () => {
     try {
@@ -16,7 +23,6 @@ export default function FullBlogs() {
         `${import.meta.env.VITE_BASE_URL}blogs/get-blog/${blogId}`
       );
       setBlog(response.data); 
-      console.log(response.data)
       setLoading(false);
     } catch (error) {
       console.error("Error fetching blog by ID:", error);
@@ -46,11 +52,11 @@ export default function FullBlogs() {
             <img src={`${import.meta.env.VITE_BASE_URL}${blog.Image}`} alt="Blog" />
           </div>
           <div className={styles.title}>
-          <p>{blog.Title}</p>
+            <p>{blog.Title}</p>
           </div>
           <div className={styles.paragraphs}>
             {blog.Description ? (
-              <p>{blog.Description}</p>
+              renderParagraphs(blog.Description)
             ) : (
               <p style={{ color: "#aaa" }}>No content available</p>
             )}
