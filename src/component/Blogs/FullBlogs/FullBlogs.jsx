@@ -9,11 +9,20 @@ export default function FullBlogs() {
   const [blog, setBlog] = useState(null);
   const { blogId } = useParams();
 
-  // Function to render paragraphs
   const renderParagraphs = (description) => {
-    return description.split('\n').map((paragraph, index) => (
-      <p key={index}>{paragraph}</p>
-    ));
+    const paragraphs = description.split('\n');
+  
+    return paragraphs.map((paragraph, index) => {
+      if (/^([A-Z][a-zA-Z\s]+)(?::)?\s*$/.test(paragraph)) {
+        return (
+          <h2 key={index} style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
+            {paragraph}
+          </h2>
+        );
+      } else {
+        return <p key={index}>{paragraph}</p>;
+      }
+    });
   };
 
   // Fetch an individual blog by its ID
