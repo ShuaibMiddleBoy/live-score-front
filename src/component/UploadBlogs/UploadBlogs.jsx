@@ -160,7 +160,7 @@ export default function UploadBlogs() {
               ref={editableRef}
               value={formData.Description}
               onChange={handleInputChange}
-              style={{ height: "200px", overflowY: "scroll" }}
+              style={{ minHeight: "200px", backgroundColor: "white" }}
             />
           </div>
           <div className={BlogsStyles.formGroup}>
