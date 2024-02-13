@@ -3,27 +3,12 @@ import { useParams } from "react-router-dom";
 import styles from "./FullBlogs.module.css";
 import axios from "axios";
 import { PulseLoader } from "react-spinners";
+import DOMPurify from "dompurify"; // Import DOMPurify library
 
 export default function FullBlogs() {
   const [loading, setLoading] = useState(true);
   const [blog, setBlog] = useState(null);
   const { blogId } = useParams();
-
-  const renderParagraphs = (description) => {
-    const paragraphs = description.split('\n');
-  
-    return paragraphs.map((paragraph, index) => {
-      if (/^([A-Z][a-zA-Z\s]+)(?::)?\s*$/.test(paragraph)) {
-        return (
-          <h2 key={index} style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>
-            {paragraph}
-          </h2>
-        );
-      } else {
-        return <p key={index}>{paragraph}</p>;
-      }
-    });
-  };
 
   // Fetch an individual blog by its ID
   const fetchBlogById = async () => {
@@ -42,6 +27,11 @@ export default function FullBlogs() {
   useEffect(() => {
     fetchBlogById();
   }, [blogId]);
+
+  // Function to sanitize HTML content
+  const sanitizeHTML = (html) => ({
+    __html: DOMPurify.sanitize(html),
+  });
 
   return (
     <div className={styles.interviewContainer}>
@@ -65,7 +55,7 @@ export default function FullBlogs() {
           </div>
           <div className={styles.paragraphs}>
             {blog.Description ? (
-              renderParagraphs(blog.Description)
+              <div dangerouslySetInnerHTML={sanitizeHTML(blog.Description)}></div>
             ) : (
               <p style={{ color: "#aaa" }}>No content available</p>
             )}

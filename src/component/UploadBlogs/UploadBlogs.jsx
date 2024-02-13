@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import BlogsStyles from "./UploadBlogs.module.css";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import MediumEditor from "medium-editor";
+import "medium-editor/dist/css/medium-editor.min.css";
+import "medium-editor/dist/css/themes/default.min.css";
 
 export default function UploadBlogs() {
   const [formData, setFormData] = useState({
@@ -12,6 +15,46 @@ export default function UploadBlogs() {
     Description: "",
     Image: null,
   });
+
+  const editableRef = useRef(null); // Reference for the textarea element
+
+  useEffect(() => {
+    if (editableRef.current) {
+      const editor = new MediumEditor(editableRef.current, {
+        toolbar: {
+          buttons: [
+            "bold",
+            "italic",
+            "underline",
+            "anchor",
+            "h1",
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "h6",
+            "quote",
+            "unorderedList", // Change to unorderedList
+          ],
+        },
+      });
+
+      editor.subscribe("editableInput", function (event, editable) {
+        setFormData({
+          ...formData,
+          Description: editable.innerHTML,
+        });
+      });
+
+      // Customizing editor styles
+      editableRef.current.style.backgroundColor = "white";
+      editableRef.current.style.color = "black";
+
+      return () => {
+        editor.destroy();
+      };
+    }
+  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -80,7 +123,7 @@ export default function UploadBlogs() {
               id="Title"
               name="Title"
               className={BlogsStyles.input}
-              value={formData.title}
+              value={formData.Title}
               onChange={handleInputChange}
             />
           </div>
@@ -92,7 +135,7 @@ export default function UploadBlogs() {
                 id="Category"
                 name="Category"
                 className={BlogsStyles.input}
-                value={formData.category}
+                value={formData.Category}
                 onChange={handleInputChange}
               />
             </div>
@@ -103,7 +146,7 @@ export default function UploadBlogs() {
                 id="Date"
                 name="Date"
                 className={BlogsStyles.input}
-                value={formData.date}
+                value={formData.Date}
                 onChange={handleInputChange}
               />
             </div>
@@ -113,11 +156,12 @@ export default function UploadBlogs() {
             <textarea
               id="Description"
               name="Description"
-              rows={8}
               className={BlogsStyles.textarea}
-              value={formData.description}
+              ref={editableRef}
+              value={formData.Description}
               onChange={handleInputChange}
-            ></textarea>
+              style={{ height: "200px", overflowY: "scroll" }}
+            />
           </div>
           <div className={BlogsStyles.formGroup}>
             <label htmlFor="Image">Upload File</label>

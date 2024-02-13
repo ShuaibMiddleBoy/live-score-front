@@ -3,6 +3,7 @@ import BlogsStyles from "./NewBlogs.module.css";
 import { PulseLoader } from "react-spinners";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import DOMPurify from "dompurify"; // Import DOMPurify library
 
 export default function NewBlogs() {
   const [loading, setLoading] = useState(true);
@@ -26,6 +27,11 @@ export default function NewBlogs() {
         setLoading(false);
       });
   }, []);
+
+  // Function to sanitize HTML content
+  const sanitizeHTML = (html) => ({
+    __html: DOMPurify.sanitize(html),
+  });
 
   const truncateDescription = (description) => {
     if (!description) {
@@ -79,7 +85,7 @@ export default function NewBlogs() {
                     <h3>{blog.Title}</h3>
                   </div>
                   <div className={BlogsStyles.cardPara}>
-                    <p>{truncateDescription(blog.Description)}</p>
+                    <div dangerouslySetInnerHTML={sanitizeHTML(truncateDescription(blog.Description))}></div>
                   </div>
                   <div className={BlogsStyles.cardTime}>
                     <span>{new Date(blog.createdAt).toLocaleString()}</span>
