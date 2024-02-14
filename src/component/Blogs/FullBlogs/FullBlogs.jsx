@@ -29,7 +29,7 @@ export default function FullBlogs() {
   const fetchComments = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:8000/comments/${blogId}/get-comments`
+        `${import.meta.env.VITE_BASE_URL}comments/${blogId}/get-comments`
       );
       setDynamicComments(response.data);
     } catch (error) {
@@ -53,12 +53,12 @@ export default function FullBlogs() {
   const handleSubmitComment = async () => {
     try {
       const response = await axios.post(
-        `http://localhost:8000/comments/${blogId}/create-comment`,
+        `${import.meta.env.VITE_BASE_URL}comments/${blogId}/create-comment`,
         { Comment: comment }
       );
       console.log("Comment submitted:", response.data);
       setComment("");
-      fetchComments(); 
+      fetchComments();
     } catch (error) {
       console.error("Error submitting comment:", error);
     }
@@ -79,14 +79,19 @@ export default function FullBlogs() {
             • Last updated on {new Date(blog.updatedAt).toLocaleString()}
           </p>
           <div className={styles.image}>
-            <img src={`${import.meta.env.VITE_BASE_URL}${blog.Image}`} alt="Blog" />
+            <img
+              src={`${import.meta.env.VITE_BASE_URL}${blog.Image}`}
+              alt="Blog"
+            />
           </div>
           <div className={styles.title}>
             <p>{blog.Title}</p>
           </div>
           <div className={styles.paragraphs}>
             {blog.Description ? (
-              <div dangerouslySetInnerHTML={sanitizeHTML(blog.Description)}></div>
+              <div
+                dangerouslySetInnerHTML={sanitizeHTML(blog.Description)}
+              ></div>
             ) : (
               <p style={{ color: "#aaa" }}>No content available</p>
             )}
@@ -100,10 +105,13 @@ export default function FullBlogs() {
               placeholder="Write your comment here..."
               className={styles.commentInput}
             />
-             <div className={styles.submitButtonStyles}>
-            <button onClick={handleSubmitComment} className={styles.submitButton}>
-              Submit
-            </button>
+            <div className={styles.submitButtonStyles}>
+              <button
+                onClick={handleSubmitComment}
+                className={styles.submitButton}
+              >
+                Submit
+              </button>
             </div>
           </div>
           {/* Dynamic Comments */}
@@ -117,7 +125,7 @@ export default function FullBlogs() {
                   </li>
                 ))
               ) : (
-                <p style={{"color" : "#aaa"}}>No comments available</p>
+                <p style={{ color: "#aaa" }}>No comments available</p>
               )}
             </ul>
           </div>
