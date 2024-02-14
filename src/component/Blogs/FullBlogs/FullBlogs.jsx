@@ -117,7 +117,7 @@ export default function FullBlogs() {
                   </li>
                 ))
               ) : (
-                <p>No comments available</p>
+                <p style={{"color" : "#aaa"}}>No comments available</p>
               )}
             </ul>
           </div>
