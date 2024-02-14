@@ -1,39 +1,41 @@
+/* FullBlogs Styles */
+
+/* Container */
 .interviewContainer {
   margin: 0 auto;
   padding: 20px;
 }
 
+/* Blog Title */
 .title {
   font-size: 24px;
   font-weight: bold;
   margin-bottom: 10px;
   color: #ff6b00;
 }
-.heading {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
-  color: #ff6b00;
-}
 
+/* Metadata */
 .meta {
   font-size: 14px;
   color: #777;
   margin-bottom: 20px;
 }
 
+/* Blog Image */
 .image img {
   width: 700px;
   object-fit: cover;
   margin-bottom: 20px;
 }
 
+/* Blog Paragraphs */
 .paragraphs {
   font-size: 16px;
   line-height: 1.5;
   color: #a9a9a9;
 }
 
+/* Spinner Container */
 .spinnerContainer {
   display: flex;
   justify-content: center;
@@ -41,11 +43,89 @@
   width: 100%;
 }
 
+/* Spinner */
 .spinner {
   text-align: center;
 }
 
-/* Styles for screens with width less than 700px */
+/* Comment Box Container */
+.commentBox {
+  margin-top: 70px;
+  padding-bottom: 5px;
+}
+
+/* Comment Input */
+.commentInput {
+  width: calc(100% - 40px); 
+  padding: 10px;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  border-bottom: 2px solid #aaa;
+  background-color: transparent;
+  color: #fff;
+}
+.submitButtonStyles{
+  width: calc(100% - 40px);
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 5px;
+}
+
+/* Submit Button */
+.submitButton {
+  margin-top: 10px; /* Add margin-top */
+  background-color: #ff6b00;
+  color: white;
+  border: none;
+  padding: 7px 17px;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submitButton:hover {
+  background-color: #d45e00;
+}
+
+/* Static Comments Section */
+.dynamicComments {
+  margin-top: 10px;
+}
+
+.dynamicComments h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #aaa;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.dynamicComments ul {
+  list-style: none;
+  padding: 0;
+}
+
+.dynamicComments li {
+  color: #aaa;
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+.dynamicComments li p {
+  margin: 0;
+}
+
+.dynamicComments li::before {
+  content: "\f10d";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  margin-right: 10px;
+  color: #ff6b00;
+}
+
+/* Media Queries for Smaller Screens */
 @media (max-width: 700px) {
   .interviewContainer {
     padding: 10px;
@@ -70,5 +150,13 @@
   .paragraphs {
     font-size: 14px;
     line-height: 1.4;
+  }
+
+  .dynamicComments h2 {
+    font-size: 20px;
+  }
+
+  .commentBox {
+    padding-bottom: 10px;
   }
 }

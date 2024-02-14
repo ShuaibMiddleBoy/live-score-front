@@ -20,6 +20,9 @@
     "medium-editor": "^5.23.3",
     "paraphrase": "^3.1.1",
     "react": "^18.2.0",
+    "react-commentbox": "^3.0.1",
+    "react-comments": "^0.0.0",
+    "react-comments-section": "^2.0.10",
     "react-dom": "^18.2.0",
     "react-helmet-async": "^2.0.4",
     "react-loader-spinner": "^6.1.6",
@@ -29,6 +32,7 @@
     "react-spinners": "^0.13.8",
     "react-toastify": "^10.0.4",
     "react-transition-group": "^4.4.5",
+    "uuid": "^9.0.1",
     "video-react": "^0.16.0"
   },
   "devDependencies": {
