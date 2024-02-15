@@ -42,7 +42,7 @@ export default function GetVideos() {
                 <div className={GetVideosStyles.cardContent}>
                   <div className={GetVideosStyles.cardVideo}>
                     <Player>
-                      <source src={`http://localhost:3000${video.video}`} />
+                      <source src={`${import.meta.env.VITE_BASE_URL}${video.video}`} />
                     </Player>
                   </div>
                   <div className={GetVideosStyles.cardTitle}>
