@@ -3,10 +3,6 @@
   margin: 0 auto;
   padding: 20px;
   border-radius: 10px;
-  opacity: 0;
-  animation: fadeIn 0.5s ease-in-out forwards;
-  transform: scale(0.95);
-  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .title {
@@ -39,12 +35,6 @@
   color: #aaa;
 }
 
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
 /* Styles for screens with width less than 700px */
 @media (max-width: 700px) {
   .title {

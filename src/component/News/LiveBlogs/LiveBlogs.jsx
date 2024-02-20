@@ -13,18 +13,25 @@ export default function PrimaryNews() {
   const paraphraseHline = async (hline) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/chatbots/paraphrase-generated-content",
+        `${import.meta.env.VITE_BASE_URL}chatbots/paraphrase-generated-content`,
         {
           prompt: hline,
         }
       );
-
+  
       return response.data.paraphrasedContent;
     } catch (error) {
-      console.error("Error paraphrasing content:", error);
-      return hline; // Return the original hline in case of error
+      if (error.response && error.response.status === 429) {
+        // If rate limit exceeded, return original hline
+        console.error("Rate limit exceeded for paraphrasing. Using original headline.");
+        return hline;
+      } else {
+        // For other errors, log and return original hline
+        console.error("Error paraphrasing content:", error);
+        return hline; // Return the original hline in case of error
+      }
     }
-  };
+  };  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -94,7 +101,15 @@ export default function PrimaryNews() {
 
   return (
     <div>
-      <Helmet>
+      {loading ? (
+        <div className={PrimaryNewsStyles.spinnerContainer}>
+          <div className={PrimaryNewsStyles.spinner}>
+            <PulseLoader color={"#ff6b00"} loading={loading} size={15} />
+          </div>
+        </div>
+      ) : (
+        <>
+        <Helmet>
         <meta
           name="Interviews description"
           content="Dive into the excitement of live cricket blogs, offering real-time updates and vibrant commentary. Immerse yourself in the game with our dynamic insights and stay connected with the latest cricket action!"
@@ -103,14 +118,6 @@ export default function PrimaryNews() {
       <h3 className={PrimaryNewsStyles.headingContainer}>
       Live Cricket Blogs | Cricket Updates
       </h3>
-    <div>
-      {loading ? (
-        <div className={PrimaryNewsStyles.spinnerContainer}>
-          <div className={PrimaryNewsStyles.spinner}>
-            <PulseLoader color={"#ff6b00"} loading={loading} size={15} />
-          </div>
-        </div>
-      ) : (
         <div className={PrimaryNewsStyles.container}>
           {newsData.map((news, index) => (
             <div
@@ -136,13 +143,13 @@ export default function PrimaryNews() {
                 </div>
                 <div className={PrimaryNewsStyles.cardTime}>
                   <span>{getTimeAgo(news.story.pubTime)}</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </>
       )}
-    </div>
     </div>
   );
 }

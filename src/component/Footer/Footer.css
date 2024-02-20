@@ -84,7 +84,8 @@ footer.footer {
   font-weight: 500;
   font-size: 15px;
   letter-spacing: 1px;
-  color: #aaa;
+  color: white;
+  background-color: #ff6b00;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -120,7 +121,11 @@ footer.footer {
 
 @media screen and (max-width: 990px) {
   .footer .footer-first {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Change to single column layout */
     gap: 30px;
+  }
+
+  .footer .footer-first .inner:nth-child(2) {
+    justify-self: start; /* Align to the start (left) */
   }
 }

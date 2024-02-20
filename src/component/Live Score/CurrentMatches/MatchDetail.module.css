@@ -156,7 +156,7 @@
 }
 
 .batingTable th {
-  padding: 5px 15px;
+  padding: 5px;
   border-bottom: 1px solid rgb(48, 48, 48);
 }
 
@@ -167,9 +167,9 @@
 }
 
 .fallOfWicktsContainer h3 {
-  background-color: gray;
+  background-color: grey;
   font-weight: 500;
-  padding: 5px 15px;
+  padding: 5px;
   font-size: 14px
 }
 
@@ -206,7 +206,7 @@
 }
 
 .bowlerTable th {
-  padding: 5px 15px;
+  padding: 5px;
   border-bottom: 1px solid rgb(48, 48, 48);
 }
 

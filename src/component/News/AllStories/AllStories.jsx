@@ -58,30 +58,25 @@ export default function AllStories() {
   const paraphraseText = async (text) => {
     try {
       const response = await axios.post(
-        "http://localhost:3000/chatbots/paraphrase-generated-content",
+        `${import.meta.env.VITE_BASE_URL}chatbots/paraphrase-generated-content`,
         {
           prompt: text,
         }
       );
-
+  
       return response.data.paraphrasedContent;
     } catch (error) {
-      console.error("Error paraphrasing content:", error);
-      return text; // Return the original text in case of error
+      if (error.response && error.response.status === 429) {
+        console.error("Rate limit exceeded for paraphrasing. Using original text.");
+        return text;
+      } else {
+        console.error("Error paraphrasing content:", error);
+        return text; // Return the original text in case of error
+      }
     }
-  };
+  };  
 
   return (
-    <div>
-      <Helmet>
-        <meta
-          name="All Stories description"
-          content="Stay informed with our cricket news hub. Get the latest updates, breaking news, and in-depth coverage of all things cricket in real-time. Your go-to source for cricket updates!"
-        />
-      </Helmet>
-      <h3 className={AllStoriesStyles.headingContainer}>
-      Cricket News | Cricket Updates | Live Alerts
-      </h3>
     <div>
       {loading ? (
         <div className={AllStoriesStyles.spinnerContainer}>
@@ -90,40 +85,50 @@ export default function AllStories() {
           </div>
         </div>
       ) : (
-        <div className={AllStoriesStyles.container}>
-          {newsData.map((news, index) => (
-            <div
-              key={index}
-              className={AllStoriesStyles.card}
-              onClick={() => handleCardClick(news.story.id)}
-            >
-              <div className={AllStoriesStyles.cardImage}>
-                <img
-                  src={getPlayerImageURL(news.story.imageId, index)}
-                  alt="News"
-                />
+        <>
+          <Helmet>
+            <meta
+              name="All Stories description"
+              content="Stay informed with our cricket news hub. Get the latest updates, breaking news, and in-depth coverage of all things cricket in real-time. Your go-to source for cricket updates!"
+            />
+          </Helmet>
+          <h3 className={AllStoriesStyles.headingContainer}>
+            Cricket News | Cricket Updates | Live Alerts
+          </h3>
+          <div className={AllStoriesStyles.container}>
+            {newsData.map((news, index) => (
+              <div
+                key={index}
+                className={AllStoriesStyles.card}
+                onClick={() => handleCardClick(news.story.id)}
+              >
+                <div className={AllStoriesStyles.cardImage}>
+                  <img
+                    src={getPlayerImageURL(news.story.imageId, index)}
+                    alt="News"
+                  />
+                </div>
+                <div className={AllStoriesStyles.cardContent}>
+                  <div className={AllStoriesStyles.cardCategory}>
+                    <span>{news.story.context}</span>
+                  </div>
+                  <div className={AllStoriesStyles.cardHeading}>
+                    <h3>{news.paraphrasedHline}</h3>
+                  </div>
+                  <div className={AllStoriesStyles.cardPara}>
+                    <p>{news.story.intro}</p>
+                  </div>
+                  <div className={AllStoriesStyles.cardTime}>
+                    <span>
+                      {new Date(parseInt(news.story.pubTime)).toLocaleString()}
+                    </span>
+                  </div>
+                </div>
               </div>
-              <div className={AllStoriesStyles.cardContent}>
-                <div className={AllStoriesStyles.cardCategory}>
-                  <span>{news.story.context}</span>
-                </div>
-                <div className={AllStoriesStyles.cardHeading}>
-                  <h3>{news.paraphrasedHline}</h3>
-                </div>
-                <div className={AllStoriesStyles.cardPara}>
-                  <p>{news.story.intro}</p>
-                </div>
-                <div className={AllStoriesStyles.cardTime}>
-                  <span>
-                    {new Date(parseInt(news.story.pubTime)).toLocaleString()}
-                  </span>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </>
       )}
-    </div>
     </div>
   );
 }

@@ -76,7 +76,9 @@
   .features {
     flex-direction: column; 
   }
-
+  .title {
+    font-size: 24px;
+  }
   .feature {
     width: 100%; 
     margin-right: 0; 

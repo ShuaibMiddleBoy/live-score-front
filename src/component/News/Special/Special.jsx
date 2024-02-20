@@ -18,13 +18,20 @@ export default function Special() {
           prompt: hline,
         }
       );
-
+  
       return response.data.paraphrasedContent;
     } catch (error) {
-      console.error("Error paraphrasing content:", error);
-      return hline; // Return the original hline in case of error
+      if (error.response && error.response.status === 429) {
+        // If rate limit exceeded, return original hline
+        console.error("Rate limit exceeded for paraphrasing. Using original headline.");
+        return hline;
+      } else {
+        // For other errors, log and return original hline
+        console.error("Error paraphrasing content:", error);
+        return hline; // Return the original hline in case of error
+      }
     }
-  };
+  }; 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -94,7 +101,15 @@ export default function Special() {
 
   return (
     <div>
-      <Helmet>
+      {loading ? (
+        <div className={SpecialStyles.spinnerContainer}>
+          <div className={SpecialStyles.spinner}>
+            <PulseLoader color={"#ff6b00"} loading={loading} size={15} />
+          </div>
+        </div>
+      ) : (
+        <>
+        <Helmet>
         <meta
           name="Special description"
           content="Discover exclusive cricket updates and special news. Stay ahead with premium headlines and in-depth reports, providing a unique perspective on the latest happenings in the world of cricket!"
@@ -103,14 +118,6 @@ export default function Special() {
       <h3 className={SpecialStyles.headingContainer}>
       Cricket news | Special Edition Cricket Alerts
       </h3>
-    <div>
-      {loading ? (
-        <div className={SpecialStyles.spinnerContainer}>
-          <div className={SpecialStyles.spinner}>
-            <PulseLoader color={"#ff6b00"} loading={loading} size={15} />
-          </div>
-        </div>
-      ) : (
         <div className={SpecialStyles.container}>
           {newsData.map((news, index) => (
             <div
@@ -136,13 +143,13 @@ export default function Special() {
                 </div>
                 <div className={SpecialStyles.cardTime}>
                   <span>{getTimeAgo(news.story.pubTime)}</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </>
       )}
-    </div>
     </div>
   );
 }

@@ -58,10 +58,17 @@ export default function Spotlight() {
       );
       return response.data.paraphrasedContent;
     } catch (error) {
-      console.error("Error paraphrasing content:", error);
-      return content; // Return the original content in case of an error
+      if (error.response && error.response.status === 429) {
+        // If rate limit exceeded, return original content
+        console.error("Rate limit exceeded for paraphrasing. Using original content.");
+        return content;
+      } else {
+        // For other errors, log and return original content
+        console.error("Error paraphrasing content:", error);
+        return content; // Return the original content in case of an error
+      }
     }
-  };
+  };  
 
   const getPlayerImageURL = (imageId, index) => {
     const delay = index * 10000;
@@ -95,7 +102,15 @@ export default function Spotlight() {
 
   return (
     <div>
-      <Helmet>
+    {loading ? (
+      <div className={SpotlightStyles.spinnerContainer}>
+        <div className={SpotlightStyles.spinner}>
+          <PulseLoader color={"#ff6b00"} loading={loading} size={15} />
+        </div>
+      </div>
+    ) : (
+      <>
+        <Helmet>
         <meta
           name="Spotlight description"
           content="Stay in the know with our spotlight on breaking cricket news. Get the latest updates, in-depth coverage, and real-time alerts. Your go-to source for the latest in cricket!"
@@ -104,14 +119,6 @@ export default function Spotlight() {
       <h3 className={SpotlightStyles.headingContainer}>
       Breaking News | Spotlight News on Cricket
       </h3>
-    <div>
-      {loading ? (
-        <div className={SpotlightStyles.spinnerContainer}>
-          <div className={SpotlightStyles.spinner}>
-            <PulseLoader color={"#ff6b00"} loading={loading} size={15} />
-          </div>
-        </div>
-      ) : (
         <div className={SpotlightStyles.container}>
           {newsData.map((news, index) => (
             <div
@@ -142,8 +149,8 @@ export default function Spotlight() {
             </div>
           ))}
         </div>
+        </>
       )}
-    </div>
     </div>
   );
 }

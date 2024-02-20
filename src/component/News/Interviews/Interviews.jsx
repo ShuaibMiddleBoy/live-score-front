@@ -25,10 +25,17 @@ export default function Interviews() {
       // Assuming the first suggestion is used
       return data.suggestions[0].text;
     } catch (error) {
-      console.log(error);
-      return text; // Return original text in case of error
+      if (error.response && error.response.status === 429) {
+        // If rate limit exceeded, return original text
+        console.error("Rate limit exceeded for paraphrasing. Using original text.");
+        return text;
+      } else {
+        // For other errors, log and return original text
+        console.error("Error paraphrasing content:", error);
+        return text; // Return the original text in case of error
+      }
     }
-  };
+  };  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -80,7 +87,15 @@ export default function Interviews() {
 
   return (
     <div>
-      <Helmet>
+      {loading ? (
+        <div className={InterviewsStyles.spinnerContainer}>
+          <div className={InterviewsStyles.spinner}>
+            <PulseLoader color={"#ff6b00"} loading={loading} size={15} />
+          </div>
+        </div>
+      ) : (
+        <>
+        <Helmet>
         <meta
           name="Interviews description"
           content="Dive into exclusive cricket interviews and highlights. Explore in-depth player insights, memorable moments, and breaking news, bringing you closer to the heart of the game!"
@@ -89,14 +104,6 @@ export default function Interviews() {
       <h3 className={InterviewsStyles.headingContainer}>
       Exclusive Cricket Interviews | Player Insights
       </h3>
-    <div>
-      {loading ? (
-        <div className={InterviewsStyles.spinnerContainer}>
-          <div className={InterviewsStyles.spinner}>
-            <PulseLoader color={"#ff6b00"} loading={loading} size={15} />
-          </div>
-        </div>
-      ) : (
         <div className={InterviewsStyles.container}>
           {newsData.map((news, index) => (
             <div
@@ -124,13 +131,13 @@ export default function Interviews() {
                   <span>
                     {new Date(parseInt(news.story.pubTime)).toLocaleString()}
                   </span>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </>
       )}
-    </div>
     </div>
   );
 }

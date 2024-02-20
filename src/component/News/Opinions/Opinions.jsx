@@ -3,6 +3,7 @@ import OpinionsStyles from "../News.module.css";
 import { PulseLoader } from "react-spinners";
 import { useNavigate } from "react-router-dom";
 import axios from 'axios';
+import { Helmet } from "react-helmet-async"; 
 
 export default function Opinions() {
   const [newsData, setNewsData] = useState([]);
@@ -17,13 +18,20 @@ export default function Opinions() {
           prompt: hline,
         }
       );
-
+  
       return response.data.paraphrasedContent;
     } catch (error) {
-      console.error("Error paraphrasing content:", error);
-      return hline; // Return the original hline in case of error
+      if (error.response && error.response.status === 429) {
+        // If rate limit exceeded, return original hline
+        console.error("Rate limit exceeded for paraphrasing. Using original headline.");
+        return hline;
+      } else {
+        // For other errors, log and return original hline
+        console.error("Error paraphrasing content:", error);
+        return hline; // Return the original hline in case of error
+      }
     }
-  };
+  }; 
 
   useEffect(() => {
     const fetchData = async () => {
@@ -100,6 +108,16 @@ export default function Opinions() {
           </div>
         </div>
       ) : (
+        <>
+          <Helmet>
+            <meta
+              name="Opinions description"
+              content="Stay informed with our cricket news hub. Get the latest updates, breaking news, and in-depth coverage of all things cricket in real-time. Your go-to source for cricket updates!"
+            />
+          </Helmet>
+          <h3 className={OpinionsStyles.headingContainer}>
+          Opinions | Cricket Updates | Live Alerts
+          </h3>
         <div className={OpinionsStyles.container}>
           {newsData.map((news, index) => (
             <div
@@ -125,11 +143,12 @@ export default function Opinions() {
                 </div>
                 <div className={OpinionsStyles.cardTime}>
                   <span>{getTimeAgo(news.story.pubTime)}</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </>
       )}
     </div>
   );

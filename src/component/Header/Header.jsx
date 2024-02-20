@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Header.css";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { jwtDecode } from "jwt-decode";
@@ -25,6 +25,7 @@ export default function Header() {
   const [isAdmin, setIsAdmin] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  const navRef = useRef(null);
 
   const handleShowNavbar = () => {
     setShowNavbar(!showNavbar);
@@ -46,6 +47,19 @@ export default function Header() {
   const handleBlogs = () => {
     navigate("/upload-blogs");
   };
+
+  const handleClickOutside = (event) => {
+    if (navRef.current && !navRef.current.contains(event.target)) {
+      setShowNavbar(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -101,7 +115,7 @@ export default function Header() {
   }, [location.pathname]);
 
   return (
-    <div className={`header`}>
+    <div className={`header`} ref={navRef}>
       <Link to="/">
         <div className="logo">
           <img src={logo} alt="Logo" />
@@ -111,9 +125,7 @@ export default function Header() {
         <ul>
           <li
             className={activeMenu === "live-scores" ? "nav-link-active" : ""}
-            onClick={() => {
-              handleMenuItemClick("live-scores");
-            }}
+            onClick={() => handleMenuItemClick("live-scores")}
           >
             <Link to="/live-scores">
               <SportsSoccerIcon /> Live Scores
@@ -139,20 +151,7 @@ export default function Header() {
               <LibraryBooksIcon /> Blogs
             </Link>
           </li>
-          {/* {userLoggedIn ? (
-            // <li className={activeMenu === "chatbot" ? "nav-link-active" : ""}>
-            //   <Link to="/chatbot">
-            //     <RobotIcon /> Chatbot
-            //   </Link>
-            // </li>
-          ) : (
-            ""
-          )} */}
-          <li
-            className={`nav-item-dropdown ${
-              activeMenu === "rankings" ? "nav-link-active" : ""
-            }`}
-          >
+          <li className={`nav-item-dropdown ${activeMenu === "rankings" ? "nav-link-active" : ""}`}>
             <button onClick={toggleSubMenu}>
               <span>
                 <SportsCricketIcon /> Rankings <ArrowDropDownIcon />
@@ -161,40 +160,22 @@ export default function Header() {
             {isSubMenuOpen && (
               <ul className="submenu">
                 <li>
-                  <Link
-                    to="/rankings/men"
-                    onClick={() => setIsSubMenuOpen(false)}
-                  >
-                    Men
-                  </Link>
+                  <Link to="/rankings/men" onClick={() => setIsSubMenuOpen(false)}>Men</Link>
                 </li>
                 <li>
-                  <Link
-                    to="/rankings/women"
-                    onClick={() => setIsSubMenuOpen(false)}
-                  >
-                    Women
-                  </Link>
+                  <Link to="/rankings/women" onClick={() => setIsSubMenuOpen(false)}>Women</Link>
                 </li>
               </ul>
             )}
           </li>
           <li>
-            {userLoggedIn ? (
-              <>
-                <div className="signBTns">
-                  {isAdmin && (
-                    <button onClick={handleBlogs} className="button">
-                      Blogs
-                    </button>
-                  )}
-                  <button className="button" onClick={handleVideo}>
-                    Videos
-                  </button>
-                </div>
-              </>
-            ) : (
-              ""
+            {userLoggedIn && (
+              <div className="signBTns">
+                {isAdmin && (
+                  <button onClick={handleBlogs} className="button">Blogs</button>
+                )}
+                <button className="button" onClick={handleVideo}>Videos</button>
+              </div>
             )}
           </li>
         </ul>

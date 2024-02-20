@@ -4,43 +4,38 @@ import axios from 'axios';
 
 const Disclaimer = () => {
   const [accepted, setAccepted] = useState(false);
-  const [width, setWidth] = useState('70%');
 
   const handleAccept = () => {
-    // Make a POST request to the API to store cookie acceptance
     axios.post(`${import.meta.env.VITE_BASE_URL}cookies/accept-cookie`)
       .then((response) => {
-        console.log(response.data)
+        console.log(response.data);
         localStorage.setItem('acceptedDisclaimer', 'true');
-        setAccepted(true);
-        setWidth('0%');
+        setAccepted(true); // Set accepted to true
       })
       .catch((error) => {
         console.error('Error accepting cookie:', error);
       });
   };
 
-  // Check if the user has previously accepted the disclaimer
-  const hasAccepted = localStorage.getItem('acceptedDisclaimer') === 'true';
-
   useEffect(() => {
-    if (hasAccepted) {
-      setWidth('0%');
-    }
-  }, [hasAccepted]);
+    const hasAccepted = localStorage.getItem('acceptedDisclaimer') === 'true';
+    setAccepted(hasAccepted); // Update state based on localStorage
+  }, []);
+
+  if (accepted) {
+    return null;
+  }
 
   return (
-    <div className={DisclaimerStyles.mainDisclaimer} >
-    <div className={DisclaimerStyles.disclaimer} style={{ width: width }}>
-      {!hasAccepted && !accepted && (
+    <div className={DisclaimerStyles.mainDisclaimer}>
+      <div className={DisclaimerStyles.disclaimer} style={{ width: '70%' }}>
         <div className={DisclaimerStyles.content}>
           <p>
             This website uses cookies to enhance the user experience. By using this website, you consent to our use of cookies.
           </p>
           <button className={DisclaimerStyles.Disclaimerbtn} onClick={handleAccept}>Accept</button>
         </div>
-      )}
-    </div>
+      </div>
     </div>
   );
 };

@@ -23,7 +23,21 @@ export default function DetailedInterviews() {
         const response = await fetch(apiUrl, options);
         const data = await response.json();
 
-        setDetailedNews(data);
+        // Remove words like '@B1$' from the content
+        const cleanedContent = data.content.map(contentItem => {
+          if (contentItem.content?.contentType === "text") {
+            return {
+              ...contentItem,
+              content: {
+                ...contentItem.content,
+                contentValue: contentItem.content.contentValue.replace(/@[\w\d]*\$[\w\d]*/g, "")
+              }
+            };
+          }
+          return contentItem;
+        });
+
+        setDetailedNews({ ...data, content: cleanedContent });
         setLoading(false);
       } catch (error) {
         console.error("Error fetching detailed news data:", error);

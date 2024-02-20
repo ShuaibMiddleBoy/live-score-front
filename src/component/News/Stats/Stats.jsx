@@ -58,10 +58,18 @@ export default function Stats() {
       );
       return response.data.paraphrasedContent;
     } catch (error) {
-      console.error("Error paraphrasing content:", error);
-      return content; // Return the original content in case of an error
+      if (error.response && error.response.status === 429) {
+        // If rate limit exceeded, return original content
+        console.error("Rate limit exceeded for paraphrasing. Using original content.");
+        return content;
+      } else {
+        // For other errors, log and return original content
+        console.error("Error paraphrasing content:", error);
+        return content; // Return the original content in case of an error
+      }
     }
   };
+  
 
   const getPlayerImageURL = (imageId, index) => {
     const delay = index * 10000;
@@ -95,7 +103,15 @@ export default function Stats() {
 
   return (
     <div>
-      <Helmet>
+      {loading ? (
+        <div className={StatsStyles.spinnerContainer}>
+          <div className={StatsStyles.spinner}>
+            <PulseLoader color={"#ff6b00"} loading={loading} size={15} />
+          </div>
+        </div>
+      ) : (
+        <>
+        <Helmet>
         <meta
           name="Stat description"
           content="Explore cricket news with a statistical twist. Get live updates, in-depth analysis, and breaking news, all focused on the intricate world of cricket statistics. Stay informed!"
@@ -104,14 +120,6 @@ export default function Stats() {
       <h3 className={StatsStyles.headingContainer}>
       Cricket News | Live Cricket Stat Alerts
       </h3>
-    <div>
-      {loading ? (
-        <div className={StatsStyles.spinnerContainer}>
-          <div className={StatsStyles.spinner}>
-            <PulseLoader color={"#ff6b00"} loading={loading} size={15} />
-          </div>
-        </div>
-      ) : (
         <div className={StatsStyles.container}>
           {newsData.map((news, index) => (
             <div
@@ -137,13 +145,13 @@ export default function Stats() {
                 </div>
                 <div className={StatsStyles.cardTime}>
                   <span>{getTimeAgo(news.story.pubTime)}</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        </>
       )}
-    </div>
     </div>
   );
 }

@@ -63,10 +63,10 @@
   gap: 5px;
 }
 .headingContainer{
-  font-size: 20px;
+  font-size: 22px;
   color: #ff6b00;
-  margin-left: 25px;
-  margin-top: 15px;
+  margin-left: 28px;
+  margin-top: 20px;
   font-family: "Poppins", sans-serif;
   font-weight: 700;
   font-style: normal;
@@ -129,6 +129,10 @@
   }
 
   .cardImage img {
-    min-width: 150px;
+    width: 260px;
+  }
+  .headingContainer{
+    font-size: 16px;
+    margin-left: 30px;
   }
 }
