@@ -64,8 +64,10 @@ export default function Women() {
   };
 
   return (
-    <div>
-      <Helmet>
+      <div>
+      {!loading && (
+        <>
+        <Helmet>
         <meta
           name="Upcoming Women description"
           content="Stay ahead with upcoming women's cricket updates and a detailed schedule. Don't miss a moment—follow live scores and ensure you're part of every thrilling match!"
@@ -74,6 +76,8 @@ export default function Women() {
       <h3 className={styles.headingContainer}>
       Women Cricket Match Updates |Future Games
       </h3>
+      </>
+      )}
       <div className={styles.spinnerContainer}>
         <div className={styles.spinner}>
           <PulseLoader color={"#ff6b00"} loading={loading} size={15} />

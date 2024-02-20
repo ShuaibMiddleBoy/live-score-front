@@ -58,7 +58,7 @@ export default function SignUp() {
         <h1 className={SignUpStyles.title}>Sign Up Here</h1>
         <form className={SignUpStyles.form} onSubmit={handleSubmit}>
           <div className={SignUpStyles.formGroup}>
-            <label htmlFor="name">Name</label>
+            <label htmlFor="name">Name*</label>
             <input
               type="text"
               id="name"
@@ -70,7 +70,7 @@ export default function SignUp() {
             />
           </div>
           <div className={SignUpStyles.formGroup}>
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">Email*</label>
             <input
               type="email"
               id="email"
@@ -82,7 +82,7 @@ export default function SignUp() {
             />
           </div>
           <div className={SignUpStyles.formGroup}>
-            <label htmlFor="phone">Phone No</label>
+            <label htmlFor="phone">Phone No*</label>
             <input
               type="text"
               id="phone"
@@ -94,7 +94,7 @@ export default function SignUp() {
             />
           </div>
           <div className={SignUpStyles.formGroup}>
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">Password*</label>
             <input
               type="password"
               id="password"

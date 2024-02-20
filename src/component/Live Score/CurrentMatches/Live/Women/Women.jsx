@@ -65,12 +65,24 @@ export default function Women() {
 
   return (
     <div>
-      <Helmet>
-        <meta
-          name="Live Women description"
-          content="Stay tuned to live women's cricket scores and in-depth scorecards. Catch the excitement of the game with real-time updates, ensuring you don't miss a moment of women's cricket action!"
-        />
-      </Helmet>
+      {!loading && (
+        <>
+        <Helmet>
+      <meta
+        name="Live Women description"
+        content="Experience the thrill of live cricket with our real-time score updates and detailed scorecards. Stay on top of the game with our comprehensive cricket coverage."
+      />
+    </Helmet>
+    <h3 className={styles.headingContainer}>
+    Live Women Cricket | Women Score
+    </h3>
+      </>
+      )}
+      <div className={styles.spinnerContainer}>
+        <div className={styles.spinner}>
+          <PulseLoader color={"#ff6b00"} loading={loading} size={15} />
+        </div>
+      </div>
       <h3 className={styles.headingContainer}>
       Women's Cricket Live Scores | Women Cricket
       </h3>

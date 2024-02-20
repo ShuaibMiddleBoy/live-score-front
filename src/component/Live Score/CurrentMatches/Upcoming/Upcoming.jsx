@@ -7,7 +7,7 @@ import Women from './Women/Women';
 import axios from 'axios';
 
 export default function Upcoming() {
-  const [selectedOption, setSelectedOption] = useState('League');
+  const [selectedOption, setSelectedOption] = useState('International');
   const [matchTypes, setMatchTypes] = useState([]);
 
   useEffect(() => {

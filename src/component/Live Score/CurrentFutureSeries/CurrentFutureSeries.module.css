@@ -106,6 +106,9 @@ td {
   .wrapper {
     margin: 10px 20px;
   }
+  .wrapper h2 {
+    font-size: 20px;
+  }
 
   .table td {
     font-size: 12px;

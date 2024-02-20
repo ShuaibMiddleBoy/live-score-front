@@ -36,8 +36,10 @@ const WomenTab = () => {
   }, []);
 
   return (
-    <div>
-      <Helmet>
+        <div>
+      {!loading && (
+        <>
+         <Helmet>
         <meta
           name="T20 schedule description"
           content="Stay tuned for the excitement of upcoming T20 leagues. Explore our detailed schedule, catch live updates, and don't miss a single thrilling moment in the world of T20 cricket!"
@@ -46,14 +48,16 @@ const WomenTab = () => {
       <h3 className={style.headingContainer}>
       T20 Leagues schedule & Matches | Next T20 fixture
       </h3>
-    <div className={style.tabContainer}>
-      {loading ? (
-        <div className={style.spinnerContainer}>
-          <div className={style.spinner}>
-            <PulseLoader color={"#ff6b00"} loading={loading} size={15} />
+        </>
+      )}
+      <div className={style.tabContainer}>
+        {loading ? (
+          <div className={style.spinnerContainer}>
+            <div className={style.spinner}>
+              <PulseLoader color={"#ff6b00"} loading={loading} size={15} />
+            </div>
           </div>
-        </div>
-      ) : (
+        ) : (
         data.map((schedule, index) => (
           <div className={style.inner} key={index}>
             <div className={style.firstRow}>

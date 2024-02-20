@@ -117,7 +117,7 @@ export default function UploadBlogs() {
         <h1 className={BlogsStyles.title}>Upload Blogs here</h1>
         <form className={BlogsStyles.form} onSubmit={handleSubmit}>
           <div className={BlogsStyles.formGroup}>
-            <label htmlFor="Title">Title</label>
+            <label htmlFor="Title">Title*</label>
             <input
               type="text"
               id="Title"
@@ -129,7 +129,7 @@ export default function UploadBlogs() {
           </div>
           <div className={BlogsStyles.mainFormGroup}>
             <div className={BlogsStyles.formGroup}>
-              <label htmlFor="Category">Category</label>
+              <label htmlFor="Category">Category*</label>
               <input
                 type="text"
                 id="Category"
@@ -140,7 +140,7 @@ export default function UploadBlogs() {
               />
             </div>
             <div className={BlogsStyles.formGroup}>
-              <label htmlFor="Date">Date</label>
+              <label htmlFor="Date">Date*</label>
               <input
                 type="date"
                 id="Date"
@@ -152,7 +152,7 @@ export default function UploadBlogs() {
             </div>
           </div>
           <div className={BlogsStyles.formGroup}>
-            <label htmlFor="Description">Description</label>
+            <label htmlFor="Description">Description*</label>
             <textarea
               id="Description"
               name="Description"
@@ -164,7 +164,7 @@ export default function UploadBlogs() {
             />
           </div>
           <div className={BlogsStyles.formGroup}>
-            <label htmlFor="Image">Upload File</label>
+            <label htmlFor="Image">Upload File*</label>
             <input
               type="file"
               id="Image"

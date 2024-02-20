@@ -37,85 +37,89 @@ const DomesticTab = () => {
 
   return (
     <div>
-      <Helmet>
-        <meta
-          name="Domestic schedule description"
-          content="Explore the upcoming thrill of domestic cricket with our detailed schedule. Stay updated with live scores and ensure you don't miss any crucial match in the local leagues!"
-        />
-      </Helmet>
-      <h3 className={style.headingContainer}>
-      Domestic Cricket schedule | League Calendar
-      </h3>
-    <div className={style.tabContainer}>
-      {loading ? (
-        <div className={style.spinnerContainer}>
-          <div className={style.spinner}>
-            <PulseLoader color={"#ff6b00"} loading={loading} size={15} />
-          </div>
-        </div>
-      ) : (
-        data.map((schedule, index) => (
-          <div className={style.inner} key={index}>
-            <div className={style.firstRow}>
-              <h2>{schedule.scheduleAdWrapper.date}</h2>
-            </div>
-            <div className={style.secRow}>
-              <div className={style.firstCol}>
-                <h3 style={{ color: "#aaa" }}>
-                  {schedule.scheduleAdWrapper.matchScheduleList[0].seriesName}
-                </h3>
-              </div>
-              <div className={style.secCol}>
-                <p>
-                  {
-                    schedule.scheduleAdWrapper.matchScheduleList[0].matchInfo[0]
-                      .team1.teamName
-                  }{" "}
-                  vs{" "}
-                  {
-                    schedule.scheduleAdWrapper.matchScheduleList[0].matchInfo[0]
-                      .team1.teamName
-                  }
-                  ,{" "}
-                  {
-                    schedule.scheduleAdWrapper.matchScheduleList[0].matchInfo[0]
-                      .matchDesc
-                  }
-                </p>
-                <p>
-                  {
-                    schedule.scheduleAdWrapper.matchScheduleList[0].matchInfo[0]
-                      .venueInfo.ground
-                  }
-                  ,{" "}
-                  {
-                    schedule.scheduleAdWrapper.matchScheduleList[0].matchInfo[0]
-                      .venueInfo.city
-                  }
-                </p>
-              </div>
-              <div className={style.thirdCol}>
-                <span>
-                  {new Date(
-                    Number(
-                      schedule.scheduleAdWrapper.matchScheduleList[0]
-                        .matchInfo[0].startDate
-                    )
-                  ).toLocaleString()}{" "}
-                  -{" "}
-                  {new Date(
-                    Number(
-                      schedule.scheduleAdWrapper.matchScheduleList[0]
-                        .matchInfo[0].endDate
-                    )
-                  ).toLocaleString()}
-                </span>
-              </div>
-            </div>
-          </div>
-        ))
+      {!loading && (
+        <>
+          <Helmet>
+            <meta
+              name="Domestic schedule description"
+              content="Explore the upcoming thrill of domestic cricket with our detailed schedule. Stay updated with live scores and ensure you don't miss any crucial match in the local leagues!"
+            />
+          </Helmet>
+          <h3 className={style.headingContainer}>
+            Domestic Cricket schedule | League Calendar
+          </h3>
+        </>
       )}
-    </div>
+      <div className={style.tabContainer}>
+        {loading ? (
+          <div className={style.spinnerContainer}>
+            <div className={style.spinner}>
+              <PulseLoader color={"#ff6b00"} loading={loading} size={15} />
+            </div>
+          </div>
+        ) : (
+          data.map((schedule, index) => (
+            <div className={style.inner} key={index}>
+              <div className={style.firstRow}>
+                <h2>{schedule.scheduleAdWrapper.date}</h2>
+              </div>
+              <div className={style.secRow}>
+                <div className={style.firstCol}>
+                  <h3 style={{ color: "#aaa" }}>
+                    {schedule.scheduleAdWrapper.matchScheduleList[0].seriesName}
+                  </h3>
+                </div>
+                <div className={style.secCol}>
+                  <p>
+                    {
+                      schedule.scheduleAdWrapper.matchScheduleList[0].matchInfo[0]
+                        .team1.teamName
+                    }{" "}
+                    vs{" "}
+                    {
+                      schedule.scheduleAdWrapper.matchScheduleList[0].matchInfo[0]
+                        .team1.teamName
+                    }
+                    ,{" "}
+                    {
+                      schedule.scheduleAdWrapper.matchScheduleList[0].matchInfo[0]
+                        .matchDesc
+                    }
+                  </p>
+                  <p>
+                    {
+                      schedule.scheduleAdWrapper.matchScheduleList[0].matchInfo[0]
+                        .venueInfo.ground
+                    }
+                    ,{" "}
+                    {
+                      schedule.scheduleAdWrapper.matchScheduleList[0].matchInfo[0]
+                        .venueInfo.city
+                    }
+                  </p>
+                </div>
+                <div className={style.thirdCol}>
+                  <span>
+                    {new Date(
+                      Number(
+                        schedule.scheduleAdWrapper.matchScheduleList[0]
+                          .matchInfo[0].startDate
+                      )
+                    ).toLocaleString()}{" "}
+                    -{" "}
+                    {new Date(
+                      Number(
+                        schedule.scheduleAdWrapper.matchScheduleList[0]
+                          .matchInfo[0].endDate
+                      )
+                    ).toLocaleString()}
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))
+        )}
+      </div>
     </div>
   );
 };

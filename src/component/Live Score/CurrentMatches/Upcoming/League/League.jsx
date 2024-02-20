@@ -64,8 +64,10 @@ export default function League() {
   };
 
   return (
-    <div>
-      <Helmet>
+      <div>
+      {!loading && (
+        <>
+        <Helmet>
         <meta
           name="Upcoming League description"
           content="Immerse yourself in the excitement of forthcoming league cricket. Discover the league match calendar and stay tuned for live updates, ensuring you capture every thrilling moment on the field!"
@@ -74,6 +76,8 @@ export default function League() {
       <h3 className={styles.headingContainer}>
       Upcoming Cricket League Games | League games
       </h3>
+      </>
+      )}
       <div className={styles.spinnerContainer}>
         <div className={styles.spinner}>
           <PulseLoader color={"#ff6b00"} loading={loading} size={15} />

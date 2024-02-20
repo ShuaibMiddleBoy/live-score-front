@@ -64,8 +64,10 @@ export default function Women() {
   };
 
   return (
-    <div>
-      <Helmet>
+      <div>
+      {!loading && (
+        <>
+        <Helmet>
         <meta
           name="Recent Women description"
           content="Stay on top of the latest in women's cricket with live scorecards and an upcoming game schedule. Don't miss a beat—experience the excitement of every match with us!"
@@ -74,6 +76,8 @@ export default function Women() {
       <h3 className={styles.headingContainer}>
       Recent Women's Match Results | Women Cricket
       </h3>
+      </>
+      )}
       <div className={styles.spinnerContainer}>
         <div className={styles.spinner}>
           <PulseLoader color={"#ff6b00"} loading={loading} size={15} />

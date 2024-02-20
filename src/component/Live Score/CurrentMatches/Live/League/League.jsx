@@ -65,21 +65,20 @@ export default function League() {
   };
 
   return (
-    <div>
-      <Helmet>
+      <div>
+      {!loading && (
+        <>
+          <Helmet>
         <meta
-          name="Live Domestic description"
+          name="Live League description"
           content="Dive into the heart of domestic league action with our live scores and match insights. Follow every twist and turn of the game with our detailed scorecards and real-time updates!"
         />
       </Helmet>
       <h3 className={styles.headingContainer}>
-      Live Domestic League Cricket | Domestic League Score
+      Live League Cricket | League Score
       </h3>
-      <div className={styles.spinnerContainer}>
-        <div className={styles.spinner}>
-          <PulseLoader color={"#ff6b00"} loading={loading} size={15} />
-        </div>
-      </div>
+        </>
+      )}
       <div className={styles.spinnerContainer}>
         <div className={styles.spinner}>
           <PulseLoader color={"#ff6b00"} loading={loading} size={15} />
@@ -172,9 +171,9 @@ export default function League() {
                 </div>
                 <div className={styles.matchResult}>
                   <p>{match.matchInfo.status}</p>
-                </div>
-              </div>
-            ))}
+                  </div>
+            </div>
+          ))}
       </div>
     </div>
   );

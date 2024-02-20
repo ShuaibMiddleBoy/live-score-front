@@ -64,8 +64,10 @@ export default function International() {
   };
 
   return (
-    <div>
-      <Helmet>
+      <div>
+      {!loading && (
+        <>
+        <Helmet>
         <meta
           name="Upcoming International description"
           content="Explore the excitement of upcoming live cricket matches with our comprehensive schedule. Stay ahead with real-time updates, ensuring you never miss a moment of the action!"
@@ -74,6 +76,8 @@ export default function International() {
       <h3 className={styles.headingContainer}>
       Upcoming Match Updates | Live Cricket
       </h3>
+      </>
+      )}
       <div className={styles.spinnerContainer}>
         <div className={styles.spinner}>
           <PulseLoader color={"#ff6b00"} loading={loading} size={15} />

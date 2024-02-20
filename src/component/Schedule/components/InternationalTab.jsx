@@ -36,8 +36,10 @@ const InternationalTab = () => {
   }, []);
 
   return (
-    <div>
-      <Helmet>
+        <div>
+      {!loading && (
+        <>
+          <Helmet>
         <meta
           name="International schedule description"
           content="Dive into the excitement of upcoming international cricket games. Uncover the match schedule, stay connected with live updates, and experience the thrill of every global showdown on the cricket field!"
@@ -46,14 +48,16 @@ const InternationalTab = () => {
       <h3 className={style.headingContainer}>
       Upcoming Cricket Matches schedule | International Games
       </h3>
-    <div className={style.tabContainer}>
-      {loading ? (
-        <div className={style.spinnerContainer}>
-          <div className={style.spinner}>
-            <PulseLoader color={"#ff6b00"} loading={loading} size={15} />
+        </>
+      )}
+      <div className={style.tabContainer}>
+        {loading ? (
+          <div className={style.spinnerContainer}>
+            <div className={style.spinner}>
+              <PulseLoader color={"#ff6b00"} loading={loading} size={15} />
+            </div>
           </div>
-        </div>
-      ) : (
+        ) : (
         data.map((schedule, index) => (
           <div className={style.inner} key={index}>
             <div className={style.firstRow}>

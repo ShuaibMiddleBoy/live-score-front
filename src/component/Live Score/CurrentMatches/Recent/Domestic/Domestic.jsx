@@ -64,16 +64,20 @@ export default function Domestic() {
   };
 
   return (
-    <div>
-      <Helmet>
+      <div>
+      {!loading && (
+        <>
+        <Helmet>
         <meta
           name="Recent Domestic description"
           content="Explore recent domestic cricket league scorecards and plan your schedule with our upcoming game calendar. Stay updated on league match results for a complete cricket experience."
         />
       </Helmet>
-      <h3 className={styles.headingContainer}>
-      Domestic League Scoreboard | Domestic Cricket
-      </h3>
+    <h3 className={styles.headingContainer}>
+    Domestic League Scoreboard | Domestic Cricket
+    </h3>
+      </>
+      )}
       <div className={styles.spinnerContainer}>
         <div className={styles.spinner}>
           <PulseLoader color={"#ff6b00"} loading={loading} size={15} />

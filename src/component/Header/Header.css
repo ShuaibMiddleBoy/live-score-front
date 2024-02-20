@@ -209,6 +209,7 @@ ul.submenu {
 
   .nav-links.active {
     width: 270px;
+    z-index: 1;
   }
 
   .nav-links ul {

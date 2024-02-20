@@ -65,115 +65,113 @@ export default function Domestic() {
 
   return (
     <div>
-      <Helmet>
-        <meta
-          name="Live Domestic description"
-          content="Dive into the heart of domestic league action with our live scores and match insights. Follow every twist and turn of the game with our detailed scorecards and real-time updates!"
-        />
-      </Helmet>
-      <h3 className={styles.headingContainer}>
-      Live Domestic League Cricket | Domestic League Score
-      </h3>
-      <div className={styles.spinnerContainer}>
-        <div className={styles.spinner}>
-          <PulseLoader color={"#ff6b00"} loading={loading} size={15} />
-        </div>
-      </div>
+      {!loading && (
+        <>
+          <Helmet>
+            <meta
+              name="Live Domestic description"
+              content="Dive into the heart of domestic league action with our live scores and match insights. Follow every twist and turn of the game with our detailed scorecards and real-time updates!"
+            />
+          </Helmet>
+          <h3 className={styles.headingContainer}>
+            Live Domestic Cricket | Domestic Score
+          </h3>
+        </>
+      )}
       <div className={styles.spinnerContainer}>
         <div className={styles.spinner}>
           <PulseLoader color={"#ff6b00"} loading={loading} size={15} />
         </div>
       </div>
       <div className={styles.Container}>
-        {loading
-          ? null
-          : matchInfo.map((match, index) => (
-              <div
-                key={index}
-                onClick={() => goToMatchDetails(match.matchInfo.matchId)}
-                className={styles.matchCard}
-              >
-                <div className={styles.matchHeader}>
-                  <h2>{match.matchInfo.seriesName}</h2>
-                  <h3>
-                    {match.matchInfo.team1.teamName} vs{" "}
-                    {match.matchInfo.team2.teamName}
-                  </h3>
-                </div>
-                <div className={styles.teamInfo}>
-                  <div className={styles.team}>
-                    <div className={styles.teamName}>
-                      <img
-                        src={getPlayerImageURL(
-                          match.matchInfo.team1.imageId,
-                          index
-                        )}
-                        alt="News"
-                      />
-                    </div>
-                    <div className={styles.teamName}>
-                      {match.matchInfo.team1.teamSName}
-                    </div>
-                    <div className={styles.teamScore}>
-                      {`${match.matchScore?.team1Score?.inngs1?.runs ?? ""}${
-                        match.matchScore?.team1Score?.inngs1?.wickets
-                          ? `-${match.matchScore?.team1Score?.inngs1?.wickets}`
-                          : ""
-                      }${
-                        match.matchScore?.team1Score?.inngs2 &&
-                        match.matchScore?.team1Score?.inngs2?.runs !== undefined
-                          ? ` & ${match.matchScore?.team1Score?.inngs2?.runs}${
-                              match.matchScore?.team1Score?.inngs2?.wickets
-                                ? `-${match.matchScore?.team1Score?.inngs2?.wickets}`
-                                : ""
-                            }`
-                          : ""
-                      }`}
-                      {match.matchScore?.team1Score?.inngs1?.overs
-                        ? ` (${match.matchScore?.team1Score?.inngs1?.overs} Ovs)`
-                        : ""}
-                    </div>
+        {!loading &&
+          matchInfo.map((match, index) => (
+            <div
+              key={index}
+              onClick={() => goToMatchDetails(match.matchInfo.matchId)}
+              className={styles.matchCard}
+            >
+              <div className={styles.matchHeader}>
+                <h2>{match.matchInfo.seriesName}</h2>
+                <h3>
+                  {match.matchInfo.team1.teamName} vs{" "}
+                  {match.matchInfo.team2.teamName}
+                </h3>
+              </div>
+              <div className={styles.teamInfo}>
+                <div className={styles.team}>
+                  <div className={styles.teamName}>
+                    <img
+                      src={getPlayerImageURL(
+                        match.matchInfo.team1.imageId,
+                        index
+                      )}
+                      alt="News"
+                    />
                   </div>
-                  <div className={styles.team}>
-                    <div className={styles.teamName}>
-                      <img
-                        src={getPlayerImageURL(
-                          match.matchInfo.team2.imageId,
-                          index
-                        )}
-                        alt="News"
-                      />
-                    </div>
-                    <div className={styles.teamName}>
-                      {match.matchInfo.team2.teamSName}
-                    </div>
-                    <div className={styles.teamScore}>
-                      {`${match.matchScore?.team2Score?.inngs1?.runs ?? ""}${
-                        match.matchScore?.team2Score?.inngs1?.wickets
-                          ? `-${match.matchScore?.team2Score?.inngs1?.wickets}`
-                          : ""
-                      }${
-                        match.matchScore?.team2Score?.inngs2
-                          ? ` & ${
-                              match.matchScore?.team2Score?.inngs2?.runs ?? ""
-                            }${
-                              match.matchScore?.team2Score?.inngs2?.wickets
-                                ? `-${match.matchScore?.team2Score?.inngs2?.wickets}`
-                                : ""
-                            }`
-                          : ""
-                      }`}
-                      {match.matchScore?.team2Score?.inngs1?.overs
-                        ? ` (${match.matchScore?.team2Score?.inngs1?.overs} Ovs)`
-                        : ""}
-                    </div>
+                  <div className={styles.teamName}>
+                    {match.matchInfo.team1.teamSName}
+                  </div>
+                  <div className={styles.teamScore}>
+                    {`${match.matchScore?.team1Score?.inngs1?.runs ?? ""}${
+                      match.matchScore?.team1Score?.inngs1?.wickets
+                        ? `-${match.matchScore?.team1Score?.inngs1?.wickets}`
+                        : ""
+                    }${
+                      match.matchScore?.team1Score?.inngs2 &&
+                      match.matchScore?.team1Score?.inngs2?.runs !== undefined
+                        ? ` & ${match.matchScore?.team1Score?.inngs2?.runs}${
+                            match.matchScore?.team1Score?.inngs2?.wickets
+                              ? `-${match.matchScore?.team1Score?.inngs2?.wickets}`
+                              : ""
+                          }`
+                        : ""
+                    }`}
+                    {match.matchScore?.team1Score?.inngs1?.overs
+                      ? ` (${match.matchScore?.team1Score?.inngs1?.overs} Ovs)`
+                      : ""}
                   </div>
                 </div>
-                <div className={styles.matchResult}>
-                  <p>{match.matchInfo.status}</p>
+                <div className={styles.team}>
+                  <div className={styles.teamName}>
+                    <img
+                      src={getPlayerImageURL(
+                        match.matchInfo.team2.imageId,
+                        index
+                      )}
+                      alt="News"
+                    />
+                  </div>
+                  <div className={styles.teamName}>
+                    {match.matchInfo.team2.teamSName}
+                  </div>
+                  <div className={styles.teamScore}>
+                    {`${match.matchScore?.team2Score?.inngs1?.runs ?? ""}${
+                      match.matchScore?.team2Score?.inngs1?.wickets
+                        ? `-${match.matchScore?.team2Score?.inngs1?.wickets}`
+                        : ""
+                    }${
+                      match.matchScore?.team2Score?.inngs2
+                        ? ` & ${
+                            match.matchScore?.team2Score?.inngs2?.runs ?? ""
+                          }${
+                            match.matchScore?.team2Score?.inngs2?.wickets
+                              ? `-${match.matchScore?.team2Score?.inngs2?.wickets}`
+                              : ""
+                          }`
+                        : ""
+                    }`}
+                    {match.matchScore?.team2Score?.inngs1?.overs
+                      ? ` (${match.matchScore?.team2Score?.inngs1?.overs} Ovs)`
+                      : ""}
+                  </div>
                 </div>
               </div>
-            ))}
+              <div className={styles.matchResult}>
+                <p>{match.matchInfo.status}</p>
+              </div>
+            </div>
+          ))}
       </div>
     </div>
   );

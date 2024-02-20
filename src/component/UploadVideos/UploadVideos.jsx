@@ -61,7 +61,7 @@ export default function UploadVideos() {
         <h1 className={UploadVideosStyles.title}>Upload Videos here</h1>
         <form className={UploadVideosStyles.form} onSubmit={handleSubmit}>
           <div className={UploadVideosStyles.formGroup}>
-            <label htmlFor="title">Title</label>
+            <label htmlFor="title">Title*</label>
             <input
               type="text"
               id="title"
@@ -72,7 +72,7 @@ export default function UploadVideos() {
             />
           </div>
           <div className={UploadVideosStyles.formGroup}>
-            <label htmlFor="video">Upload Video</label>
+            <label htmlFor="video">Upload Video*</label>
             <input
               type="file"
               id="video"

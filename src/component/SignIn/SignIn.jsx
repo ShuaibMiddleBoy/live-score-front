@@ -52,7 +52,7 @@ export default function SignIn() {
         <h1 className={SignInStyles.title}>Sign In Here</h1>
         <form className={SignInStyles.form} onSubmit={handleSubmit}>
           <div className={SignInStyles.formGroup}>
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">Email*</label>
             <input
               type="email"
               id="email"
@@ -64,7 +64,7 @@ export default function SignIn() {
             />
           </div>
           <div className={SignInStyles.formGroup}>
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">Password*</label>
             <input
               type="password"
               id="password"
