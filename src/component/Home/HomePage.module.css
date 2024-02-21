@@ -1,277 +1,288 @@
+/* HomePage.module.css */
+
 .live {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .live .buttonContainer {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-    flex-wrap: wrap;
-  }
-  
-  .live .optionButton {
-    border-radius: 20px;
-    color: #222;
-    cursor: pointer;
-    background-color: #CFE0DB;
-    padding: 5px 20px;
-    font-size: 12px;
-    border: none;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    margin-bottom: 10px;
-  }
-  
-  .live .optionButton.selected {
-    background-color: #ff6b00;
-    color: #fff;
-  }
-  
+  display: flex;
+  flex-direction: column;
+}
+
+.mainContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.PrimaryContainer {
+  width: 90%;
+}
+
+.live .buttonContainer {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+
+.live .optionButton {
+  border-radius: 20px;
+  color: #222;
+  cursor: pointer;
+  background-color: #cfe0db;
+  padding: 5px 20px;
+  font-size: 12px;
+  border: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.live .optionButton.selected {
+  background-color: #ff6b00;
+  color: #fff;
+}
+
+.Container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 10px;
+}
+
+.matchCard {
+  border-radius: 5px;
+  margin: 15px 10px;
+  padding: 15px 10px;
+  background-color: #1d1d1d;
+  transition: all 0.5s ease-in-out;
+}
+
+.primaryMatchHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.matchCard:hover {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.matchHeader p {
+  font-size: 14px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  margin: 5px 0;
+  color: #aaa;
+}
+
+.teamInfo {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  color: #aaa;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  font-style: normal;
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+}
+
+.matchMainHeading {
+  font-size: 16px;
+  font-weight: 500;
+  font-style: normal;
+  margin: 0;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #f1f1f1;
+}
+
+.matchPrimaryHeading {
+  font-size: 14px;
+  font-weight: 400;
+  font-style: normal;
+  margin: 0;
+  letter-spacing: 1px;
+  color: #aaa;
+}
+
+.team {
+  display: grid;
+  grid-template-columns: 30px 100px 1fr;
+  width: 100%;
+}
+
+.team img {
+  width: 20px;
+  height: 20px;
+  border-radius: 2px;
+}
+
+.teamName {
+  font-size: 16px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+}
+
+.teamScore {
+  font-size: 16px;
+  color: #555;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+.matchResult {
+  margin-top: 20px;
+}
+
+.matchResult p {
+  color: #ff6b00;
+  font-size: 14px;
+  text-align: center;
+}
+
+.matchFooter {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.matchFooter p {
+  font-size: 14px;
+  color: #007bff;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  cursor: pointer;
+}
+
+.spinnerContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.spinner {
+  text-align: center;
+}
+
+@media screen and (max-width: 1168px) {
   .Container {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
   }
-  
-  .Container h2 {
-    font-size: 16px;
-    font-weight: 500;
-    color: white;
-    font-style: normal;
-    margin: 0;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
+}
+
+@media screen and (max-width: 762px) {
+  .Container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
   }
-  
-  .Container h3 {
-    font-size: 14px;
-    font-weight: 400;
-    font-style: normal;
-    margin: 0;
-    letter-spacing: 1px;
-    color: #aaa;
-  }
-  
+
   .matchCard {
     border-radius: 5px;
-    margin: 15px 10px;
-    padding: 15px 10px;
-    background-color: #1D1D1D;
-    transition: all .5s ease-in-out;
+    padding: 20px;
+    width: 400px;
+    background-color: #181818;
+    transition: all 0.5s ease-in-out;
+    margin: auto;
+    margin-top: 15px;
   }
-  
-  .primaryMatchHeader {
-    display: flex;
-    justify-content: space-between;
+}
+
+@media screen and (max-width: 466px) {
+  .matchCard {
+    width: 300px;
+    background-color: #181818;
+    transition: all 0.5s ease-in-out;
+    margin: auto;
+    margin-top: 15px;
   }
-  
-  .matchCard:hover {
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+
+  .Container h2 {
+    font-size: 13px;
   }
-  
-  .matchHeader p {
-    font-size: 14px;
-    font-family: "Poppins", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-    margin: 5px 0;
-    color: #aaa;
+
+  .Container h3 {
+    font-size: 12px;
   }
-  
-  .teamInfo {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    color: #aaa;
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-    align-items: center;
-    margin-top: 20px;
-    gap: 10px;
+
+  .teamName {
+    font-size: 12px;
   }
-  
-  .team {
-    display: grid;
-    grid-template-columns: 30px 100px 1fr;
-    width: 100%;
+
+  .matchResult {
+    margin-top: 10px;
   }
-  
+
+  .matchResult p {
+    font-size: 12px;
+  }
+
   .team img {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     border-radius: 2px;
   }
-  
-  .teamName {
-    font-size: 16px;
-    font-weight: 400;
-    display: flex;
-    align-items: center;
-  }
-  
-  .teamScore {
-    font-size: 16px;
-    color: #555;
-    font-family: "Poppins", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-  }
-  
-  .matchResult {
-    margin-top: 20px;
-  }
-  
-  .matchResult p {
-    color: #ff6b00;
-    font-size: 14px;
-    text-align: center;
-  }
-  
-  .matchFooter {
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  .matchFooter p {
-    font-size: 14px;
-    color: #007bff;
-    font-family: "Poppins", sans-serif;
-    font-weight: 300;
-    font-style: normal;
-    cursor: pointer;
-  }
-  
-  .spinnerContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+  .team {
+    display: grid;
+    grid-template-columns: 25px 100px 1fr;
     width: 100%;
   }
-  
-  .spinner {
-    text-align: center;
+
+  .teamScore {
+    font-size: 14px;
+    color: #555;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    font-style: normal;
   }
-  
-  @media screen and (max-width:1168px) {
-    .Container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-gap: 20px;
-    }
-  
+}
+
+@media screen and (max-width: 358px) {
+  .matchCard {
+    width: 270px;
+    background-color: #181818;
+    transition: all 0.5s ease-in-out;
+    margin: auto;
+    margin-top: 15px;
   }
-  
-  @media screen and (max-width:762px) {
-    .Container {
-      display: grid;
-      grid-template-columns: 1fr;
-      grid-gap: 20px;
-    }
-  
-    .matchCard {
-      border-radius: 5px;
-  
-      padding: 20px;
-      width: 400px;
-      background-color: #181818;
-      transition: all .5s ease-in-out;
-      margin: auto;
-      margin-top: 15px;
-    }
-  
-  
+}
+
+@media (max-width: 700px) {
+  .buttonContainer {
+    flex-direction: column;
+    align-items: center;
   }
-  
-  @media screen and (max-width:466px) {
-    .matchCard {
-      width: 300px;
-      background-color: #181818;
-      transition: all .5s ease-in-out;
-      margin: auto;
-      margin-top: 15px;
-    }
-  
-    .Container h2 {
-      font-size: 13px;
-    }
-  
-    .Container h3 {
-      font-size: 12px;
-    }
-  
-    .teamName {
-      font-size: 12px;
-    }
-  
-    .matchResult {
-      margin-top: 10px;
-    }
-  
-    .matchResult p {
-      font-size: 12px;
-    }
-  
-    .team img {
-      width: 15px;
-      height: 15px;
-      border-radius: 2px;
-    }
-  
-    .team {
-      display: grid;
-      grid-template-columns: 25px 100px 1fr;
-      width: 100%;
-    }
-  
-    .teamScore {
-      font-size: 14px;
-      color: #555;
-      font-family: "Poppins", sans-serif;
-      font-weight: 300;
-      font-style: normal;
-    }
-  }
-  
-  
-  @media screen and (max-width:358px) {
-    .matchCard {
-      width: 270px;
-      background-color: #181818;
-      transition: all .5s ease-in-out;
-      margin: auto;
-      margin-top: 15px;
-    }
-  
-  }
-  
-  @media (max-width: 700px) {
-    .buttonContainer {
-      flex-direction: column;
-      align-items: center;
-    }
-  }
-  .slider {
+}
+
+.slider {
+  display: flex;
+  overflow: hidden;
+}
+
+.slide {
+  min-width: 100%;
+  transition: transform 0.3s ease-in-out;
+}
+
+
+.prevButton,
+.nextButton {
+  cursor: pointer
+}
+
+@media (max-width: 700px) {
+  .arrowIconsContainer {
     display: flex;
-    overflow: hidden;
+    justify-content: space-between;
+    margin-bottom: 10px;
   }
-  
-  .slide {
-    min-width: 100%; /* Assuming you want each slide to be full width */
-    transition: transform 0.3s ease-in-out;
+
+  .arrowIconsContainer .prevButton,
+  .arrowIconsContainer .nextButton {
+    display: none;
   }
-  
-  .prevButton, .nextButton {
-    position: absolute;
-    top: 50%; /* Adjust as needed */
-    transform: translateY(-50%);
-    z-index: 2;
-  }
-  
-  .prevButton {
-    left: 10px; /* Adjust as needed */
-  }
-  
-  .nextButton {
-    right: 10px; /* Adjust as needed */
-  }
+}
