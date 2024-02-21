@@ -11,7 +11,7 @@
 }
 
 .container .inner1 .seriesName {
-    color: #aaa;
+    font-size: 24px;
     font-weight: 600;
     letter-spacing: 1px;
 }
@@ -125,6 +125,9 @@
 }
 
 @media screen and (max-width:700px) {
+    .container .inner1 .seriesName {
+        font-size: 20px;
+    }
     .batingTable thead {
         background-color: gray;
         font-size: 12px;

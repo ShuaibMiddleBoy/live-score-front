@@ -26,8 +26,4 @@
   .batters {
     margin: 0px;
   }
-
-  .batters .buttonContainer {
-    flex-direction: column;
-  }
 }

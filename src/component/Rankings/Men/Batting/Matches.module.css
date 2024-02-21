@@ -40,3 +40,8 @@
     color: #777;
     font-size: 0.8em;
   }
+  @media (max-width: 700px) {
+    .rankingsContainer {
+      padding: 0px 20px;
+    }
+  }
